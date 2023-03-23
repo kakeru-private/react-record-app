@@ -83,7 +83,8 @@ function Track() {
                 'artist':`${search[id].artist}`,
                 'fk_rid':`${search[id].fk_rid}`,
             },
-          )
+          ),
+          mode: 'cors'
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -105,7 +106,8 @@ function Track() {
           },
           body:JSON.stringify(
             {'track_id':`${track_id}`,},
-          )
+          ),
+          mode: 'cors'
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -135,7 +137,8 @@ function Track() {
               'fk_rid':`${formValues.fk_rid}`
             },
             
-            )
+            ),
+            mode: 'cors'
         })
         .then((res) => res.json())
         .then((data) => data)
@@ -153,7 +156,9 @@ function Track() {
 
     useEffect(() => {
       
-      fetch(api+'/api/track')
+      fetch(api+'/api/track',{
+        mode: 'cors'
+      })
       .then((res) => res.json())
       .then((data) => {
         

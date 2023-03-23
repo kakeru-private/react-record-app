@@ -23,7 +23,8 @@ function SignUp() {
           password:password
         }
         
-        )
+        ),
+        mode: 'cors'
     })
     .then((res) => res.json())
     .then((data) => {
@@ -70,7 +71,8 @@ function SignUp() {
           password:password
         }
         
-        )
+        ),
+        mode: 'cors'
     })
     .then((res) => res.json())
     .then((data) => {

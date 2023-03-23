@@ -91,7 +91,8 @@ function Record() {
               'numOfTrack':`${search[id].numOfTrack}`,
               'site':`${search[id].site}`
             },
-          )
+          ),
+          mode: 'cors'
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -114,7 +115,8 @@ function Record() {
           },
           body:JSON.stringify(
             {'record_id':`${record_id}`,},
-          )
+          ),
+          mode: 'cors'
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -228,7 +230,8 @@ function Record() {
               'site':`${site}`,
             },
             
-            )
+            ),
+            mode: 'cors'
         })
         .then((res) => res.json())
         .then((data) => data)
@@ -285,7 +288,8 @@ function Record() {
                     'artist':`${trackForm[index].artist}`,
                     'fk_rid':`${trackForm[index].fk_rid}`,
                   },
-                )
+                ),
+                mode: 'cors'
               })
               .then((res) => res.json())
               .then((data) => data);
@@ -336,7 +340,8 @@ function Record() {
                 'artist':`${trackEdi[id].artist}`,
                 'fk_rid':`${trackEdi[id].fk_rid}`,
               },
-            )
+            ),
+            mode: 'cors'
           })
           .then((res) => res.json())
           .then((data) => data);
@@ -357,7 +362,8 @@ function Record() {
               {
                 'track_id':`${trackEdi[id].track_id}`,
               },
-            )
+            ),
+            mode: 'cors'
           })
           .then((res) => res.json())
           .then((data) => data);
@@ -368,7 +374,9 @@ function Record() {
 
     useEffect(() => {
       
-      fetch(api+'/api/record')
+      fetch(api+'/api/record',{
+        mode: 'cors'
+      })
       .then((res) => res.json())
       .then((data) => {
         

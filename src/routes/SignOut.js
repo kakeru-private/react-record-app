@@ -10,7 +10,7 @@ function SignOut() {
     e.preventDefault();
     fetch(api+'/api/users/signout',{
         method:'POST',
-        
+        mode: 'cors'
       })
       .then((res) => res.json())
       .then((data) => {
