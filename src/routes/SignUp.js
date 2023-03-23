@@ -15,7 +15,7 @@ function SignUp() {
     const password = formValues.password;
     fetch(api+'/api/users/signup',{
       method:'POST',
-      headers:{'Content-Type': 'application/json'},
+      headers:{"Content-type": "text/plain" },
       body: JSON.stringify(
         {
           name:name,
@@ -62,7 +62,7 @@ function SignUp() {
     const password = formValues.password;
     fetch(api+'/api/users/',{
       method:'POST',
-      headers:{'Content-Type': 'application/json'},
+      headers:{"Content-type": "text/plain" },
       body: JSON.stringify(
         {
           name:name,
