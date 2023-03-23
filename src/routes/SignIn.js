@@ -9,7 +9,7 @@ function SignIn() {
   const [formErrors,setFormErrors] = useState({});
   const [isSubmit,setIsSubmit] = useState(false);
   const navigate = useNavigate();
-  const api = 'https://react-record-todo.herokuapp.com/';
+  const api = 'https://react-record-todo.herokuapp.com';
 
   const handleChange = (e) =>{
     //console.log(e.target.name);

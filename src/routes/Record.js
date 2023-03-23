@@ -20,7 +20,7 @@ function Record() {
     const [search, setSearch] = useState([]);
     const [track,setTrack] = useState([]);
     const [trackEdi, setTrackEdi] = useState([]);
-    const api = 'https://react-record-todo.herokuapp.com/';
+    const api = 'https://react-record-todo.herokuapp.com';
     
   
     

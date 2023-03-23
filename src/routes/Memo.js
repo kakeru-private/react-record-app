@@ -11,7 +11,7 @@ function Memo() {
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState([]);
     const [add, setAdd] = useState('');
-    const api = 'https://react-record-todo.herokuapp.com/';
+    const api = 'https://react-record-todo.herokuapp.com';
     const Dref = useRef();
     const Sref = useRef();
     const word = useRef();

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 function SignOut() {
   const [sucMsg,setSucMsg] = useState('');
   const [misMsg,setMisMsg] = useState('');
-  const api = 'https://react-record-todo.herokuapp.com/';
+  const api = 'https://react-record-todo.herokuapp.com';
   const handleSubmit= (e) =>{
     e.preventDefault();
     fetch(api+'/api/users/signout',{

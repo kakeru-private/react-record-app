@@ -6,7 +6,7 @@ function ChangePass() {
   const [formErrors,setFormErrors] = useState({});
   const [isSubmit,setIsSubmit] = useState(false);
   const [sucMsg,setSucMsg] = useState('');
-  const api = 'https://react-record-todo.herokuapp.com/';
+  const api = 'https://react-record-todo.herokuapp.com';
 
   const handleChange = (e) =>{
     //console.log(e.target.name);

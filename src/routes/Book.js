@@ -9,7 +9,7 @@ import AncLink from '../components/AncLink';
 
 
 function Book() {
-  const api = 'https://react-record-todo.herokuapp.com/';
+  const api = 'https://react-record-todo.herokuapp.com';
   const date = new Date();
   const time = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
   const initialValues = {isbn:'',title:'',author:'',publisher:'',site:'',release_date:time};
