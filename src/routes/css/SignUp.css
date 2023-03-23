@@ -1,0 +1,99 @@
+/*body {
+  overflow-y:hidden;
+  
+}*/
+
+.formTitle{
+  width: 100%;
+  font-size: 30px;
+}
+
+.signup{
+  text-align:  center;
+  width: 100%;
+}
+
+.formContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  
+}
+
+.formContainer form{
+  background-color: white;
+  width:70%;
+  max-width:450px;
+  padding:30px;
+  border-radius: 10px;
+  border: 1px solid #dfdfdf;
+  box-shadow: 10px 10px 19px -9px #777777;
+  border-radius: 29px;
+}
+
+.uiForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: auto;
+  
+}
+
+.formField {
+  display:  flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formField input {
+  border: 1px solid grey;
+  padding: 20px;
+  border-radius: 4px;
+  width: 100%;
+  margin-top:10px;
+  padding:10px;
+}
+
+.formField input:focus{
+  
+  outline: none;
+}
+
+.formField label{
+  font-size:15px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.submitButton {
+  background-color: rgb(138, 138, 228);
+  width:100%;
+  margin-top:10px;
+  border:none;
+  border-radius:5px;
+  padding:10px;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  transition: all 0.2s;
+}
+
+.submitButton:hover{
+  background-color: rgb(116, 116, 226);
+}
+
+.errorMsg {
+  color: red;
+  margin:0;
+  align-self:flex-start;
+}
+.err{
+  color: red;
+}
+
+.suc{
+  color: green;
+}

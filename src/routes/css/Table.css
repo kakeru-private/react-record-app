@@ -1,0 +1,370 @@
+.title{
+    background-color: #6091d3;
+    height: 60px;
+    color: white;
+
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+/*h2 {
+  padding: 1vh 0 1vh 0;
+  font-size: 30px;
+}*/
+
+#icon{
+  font-size: 30px;
+  border-radius: 5px;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  
+}
+
+
+
+.dataContainer{
+    box-sizing: border-box;
+    /*border: solid 1px #6091d3;/*線*/
+
+    min-width: 700px;
+    /*table-layout: fixed;*/
+    word-wrap: break-word;
+    
+    font-weight: bold;
+
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-all;
+    /*background-color: #d2deff;*/
+
+}
+
+table{
+  border-spacing: 5px 0;
+}
+
+th,td{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  vertical-align: bottom;
+  text-align:center;
+}
+
+tr{
+  width: 100%;
+}
+
+
+.tableContainer {
+  /*padding-right: 10vh ;*/
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+.centerContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+ 
+}
+
+.data{
+  box-sizing: border-box;
+  height: 80vh;
+  overflow: scroll;
+  width: 100%;
+  display: flex;
+  align-items:flex-start;
+  justify-content: center;
+  
+}
+
+.sortContainer {
+    
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+    padding-bottom: 5px;
+    
+}
+
+.searchContainer{
+  box-sizing: border-box;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 5vh;
+  padding-bottom:5vh;
+
+}
+
+
+
+select{
+    /*border-width: 2px;*/
+    /*border-color: #d2deff;*/
+    /*border-style:groove;*/
+    font-weight: bold;;
+}
+
+#search{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
+
+/*.searchContainer #icon{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  width: 100%;
+}*/
+
+
+.add{
+  
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  padding-top: 5vh;
+  width: 100%;
+  padding-left: 100px;;
+  padding-right: 100px;;
+}
+
+
+.add div{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.add label{
+  padding-right: 10px;
+}
+
+.as{
+  /*min-width: 200px;*/
+  max-width: 500px;
+  width:400px;
+  height: 40px;
+  border: solid;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.todoForm{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.memoForm{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
+  margin-bottom: 5px;
+}
+
+.memoForm input{
+  width: 500px;
+}
+
+.todoForm label{
+  flex:25%;
+  
+}
+
+.addTodo{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction:row;
+    border: solid;
+    padding: 10px 10px 10px 10px;
+}
+
+.addForm{
+  display: flex;
+  align-items:flex-end;
+  padding-left: 10px;
+  padding-bottom: 5px;
+
+}
+
+.addContainer{
+  padding-top: 2vh;
+  width: 100%;
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content: center;
+}
+
+
+.mainBody{
+
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  flex-direction:column;
+  width: 100%;
+}
+
+.Container{
+  width: 100%;
+  padding:0 13vh 0 10vh ;
+
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  flex-direction:column;
+  
+}
+
+.actionContainer{
+  padding: 1vh 1vh 1vh 1vh;
+  margin: 1vh 1vh 1vh 1vh;
+
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  flex-direction:column;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+.dataForm{
+  width: 100%;
+  height: 25px;
+  font-weight: bold;
+
+}
+
+.memoHome{
+  padding-bottom: 5vh;
+  padding-top: 3vh;
+  width: 100%;
+}
+
+.todoHome{
+  padding-top: 5vh;
+  width: 100%;
+}
+
+.reverse {
+  transform: rotate(-180deg) ;
+}
+
+.acc{
+  display: flex;
+  border: solid;
+  height: auto;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.tab{
+  padding:30px 10vh;
+  width: 100%;
+}
+
+.formCont{
+
+  width: 100%;
+  height: 100%;
+}
+
+.nam{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+
+/*.recordForm{
+  display: flex;
+  align-items:center;
+  justify-content:space-between;
+}*/
+
+.label{
+  font-size: 15px;
+  color: red;
+}
+
+button{
+  border: none;
+  background: transparent;
+  border-radius: 5px;
+  
+}
+
+button:hover{
+  background-color: #8c8e8f;
+}
+
+
+
+.top{
+  padding-bottom: 10vh;
+}
+
+.track{
+  font-size: 15px;
+}
+
+
+
+.font{
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.hfont{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+
+
+.anc{
+  
+  margin-top: 5px;
+  position: fixed;
+  top:120px;
+  right: 0;
+  font-size: 20px;
+  
+}
+
+
+.ancin{
+  padding:1vh;
+  border: solid;
+  text-align: start;
+  margin-right: 1vh;
+  
+  border-radius: 10px;
+}
+
+
+
