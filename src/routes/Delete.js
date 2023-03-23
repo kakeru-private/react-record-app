@@ -8,12 +8,12 @@ function Delete() {
   const [formErrors,setFormErrors] = useState({});
   const [isSubmit,setIsSubmit] = useState(false);
   const [sucMsg,setSucMsg] = useState('');
-
+  const api = 'https://react-record-todo.herokuapp.com/';
   const handleSuc=()=>{
     const name = formValues.username;
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
-    fetch('/api/users/delete',{
+    fetch(api+'/api/users/delete',{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
       body: JSON.stringify(
@@ -61,7 +61,7 @@ function Delete() {
     const name = formValues.username;
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
-    fetch('/api/users',{
+    fetch(api+'/api/users',{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
       body: JSON.stringify(

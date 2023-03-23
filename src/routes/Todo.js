@@ -14,7 +14,7 @@ function Todo() {
     const [value, setValue] = useState([]);
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState([]);
-
+    const api = 'https://react-record-todo.herokuapp.com/';
 
     
   
@@ -55,7 +55,7 @@ function Todo() {
         if(deadline === ''){
           deadline = time;
         }
-        fetch('/api/todo/edit',{
+        fetch(api+'/api/todo/edit',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -83,7 +83,7 @@ function Todo() {
       const id = search.findIndex((element)=>element.todo_id === todo_id);
 
       if(id !== undefined){
-        fetch('/api/todo/delete',{
+        fetch(api+'/api/todo/delete',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -144,7 +144,7 @@ function Todo() {
         if(deadline === ''){
           deadline = time;
         } 
-        fetch('/api/todo/add',{
+        fetch(api+'/api/todo/add',{
           method:'POST',
           headers:{'Content-Type': 'application/json'},
           body: JSON.stringify(
@@ -172,7 +172,7 @@ function Todo() {
 
     useEffect(() => {
       
-      fetch('/api/todo')
+      fetch(api+'/api/todo')
       .then((res) => res.json())
       .then((data) => {
         return (

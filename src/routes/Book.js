@@ -9,6 +9,7 @@ import AncLink from '../components/AncLink';
 
 
 function Book() {
+  const api = 'https://react-record-todo.herokuapp.com/';
   const date = new Date();
   const time = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
   const initialValues = {isbn:'',title:'',author:'',publisher:'',site:'',release_date:time};
@@ -48,7 +49,7 @@ function Book() {
       const id = search.findIndex((element)=>element.book_id === book_id);
       console.log(search[id].title);
       if(id !== undefined && search[id].title !== ''){
-        fetch('/api/book/edit',{
+        fetch(api+'/api/book/edit',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -79,7 +80,7 @@ function Book() {
       const id = search.findIndex((element)=>element.book_id === book_id);
 
       if(id !== undefined){
-        fetch('/api/book/delete',{
+        fetch(api+'/api/book/delete',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -183,7 +184,7 @@ function Book() {
         if(release_date === ''){
           release_date = time;
         } 
-        fetch('/api/book/add',{
+        fetch(api+'/api/book/add',{
           method:'POST',
           headers:{'Content-Type': 'application/json'},
           body: JSON.stringify(
@@ -214,7 +215,7 @@ function Book() {
 
     useEffect(() => {
       
-      fetch('/api/book')
+      fetch(api+'/api/book')
       .then((res) => res.json())
       .then((data) => {
         return (

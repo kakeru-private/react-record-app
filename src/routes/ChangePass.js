@@ -6,7 +6,7 @@ function ChangePass() {
   const [formErrors,setFormErrors] = useState({});
   const [isSubmit,setIsSubmit] = useState(false);
   const [sucMsg,setSucMsg] = useState('');
-
+  const api = 'https://react-record-todo.herokuapp.com/';
 
   const handleChange = (e) =>{
     //console.log(e.target.name);
@@ -31,7 +31,7 @@ function ChangePass() {
     const name = formValues.username;
     const mail = formValues.mailaddress;
     const password = formValues.password;
-    fetch('/api/users/changepass',{
+    fetch(api+'/api/users/changepass',{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
       body: JSON.stringify(

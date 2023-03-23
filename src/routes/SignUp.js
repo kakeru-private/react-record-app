@@ -8,12 +8,12 @@ function SignUp() {
   const [formErrors,setFormErrors] = useState({});
   const [isSubmit,setIsSubmit] = useState(false);
   const [sucMsg,setSucMsg] = useState('');
-
+  const api = 'https://react-record-todo.herokuapp.com/';
   const handleSuc=()=>{
     const name = formValues.username;
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
-    fetch('/api/users/signup',{
+    fetch(api+'/api/users/signup',{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
       body: JSON.stringify(
@@ -60,7 +60,7 @@ function SignUp() {
     const name = formValues.username;
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
-    fetch('/api/users/',{
+    fetch(api+'/api/users/',{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
       body: JSON.stringify(

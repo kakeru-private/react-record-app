@@ -7,7 +7,7 @@ function Home() {
   const [memoValue, setMemoValue] = useState([]);
   const [todoSearchValue, setTodoSearchValue] = useState([]);
   const [memoSearchValue, setMemoSearchValue] = useState([]);
-
+  const api = 'https://react-record-todo.herokuapp.com/';
 
   const TDref = useRef();
   const TSref = useRef();
@@ -51,7 +51,7 @@ function Home() {
 
   useEffect(() => {
       
-    fetch('/api/')
+    fetch(api+'/api/')
     .then((res) => res.json())
     .then((data) => {
       return (

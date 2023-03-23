@@ -18,7 +18,7 @@ function Track() {
     const Dref = useRef();
     const Sref = useRef();
     const word = useRef();
-
+    const api = 'https://react-record-todo.herokuapp.com/';
 
     const handleSearch =() =>{
       setSearch(value.filter((track) => track.title.toLowerCase().includes(word.current.value.toLowerCase()) || track.artist.toLowerCase().includes(word.current.value.toLowerCase()) 
@@ -71,7 +71,7 @@ function Track() {
       const id = search.findIndex((element)=>element.track_id === track_id);
       
       if(id !== undefined &&  search[id].title !== '' &&  search[id].artist !== ''){
-        fetch('/api/track/edit',{
+        fetch(api+'/api/track/edit',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -98,7 +98,7 @@ function Track() {
       const id = search.findIndex((element)=>element.track_id === track_id);
 
       if(id !== undefined){
-        fetch('/api/track/delete',{
+        fetch(api+'/api/track/delete',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -125,7 +125,7 @@ function Track() {
       const id = rid.indexOf((element)=>element.record_id === formValues.fk_rid);
       if(formValues.title !== '' && formValues.artist !== '' && id !== undefined){
         
-        fetch('/api/track/add',{
+        fetch(api+'/api/track/add',{
           method:'POST',
           headers:{'Content-Type': 'application/json'},
           body: JSON.stringify(
@@ -153,7 +153,7 @@ function Track() {
 
     useEffect(() => {
       
-      fetch('/api/track')
+      fetch(api+'/api/track')
       .then((res) => res.json())
       .then((data) => {
         

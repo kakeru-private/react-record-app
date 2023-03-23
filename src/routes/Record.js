@@ -20,7 +20,7 @@ function Record() {
     const [search, setSearch] = useState([]);
     const [track,setTrack] = useState([]);
     const [trackEdi, setTrackEdi] = useState([]);
-
+    const api = 'https://react-record-todo.herokuapp.com/';
     
   
     
@@ -76,7 +76,7 @@ function Record() {
         if(release_date === ''){
           release_date = time;
         }
-        fetch('/api/record/edit',{
+        fetch(api+'/api/record/edit',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -107,7 +107,7 @@ function Record() {
       const id = search.findIndex((element)=>element.record_id === record_id);
 
       if(id !== undefined){
-        fetch('/api/record/delete',{
+        fetch(api+'/api/record/delete',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -215,7 +215,7 @@ function Record() {
         if(release_date === ''){
           release_date = time;
         } 
-        fetch('/api/record/add',{
+        fetch(api+'/api/record/add',{
           method:'POST',
           headers:{'Content-Type': 'application/json'},
           body: JSON.stringify(
@@ -274,7 +274,7 @@ function Record() {
       const handleTrackAdd=(e,index)=>{
       
             if(trackForm[index].title !== '' && trackForm[index].artist !== ''){
-              fetch('/api/track/add',{
+              fetch(api+'/api/track/add',{
                 method:'post',
                 headers: {
                   'Content-Type': 'application/json'
@@ -324,7 +324,7 @@ function Record() {
         const id = trackEdi.findIndex((element)=>element.track_id === track_id);
 
         if(id !== undefined && trackEdi[id].title !== '' && trackEdi[id].artist !== ''){
-          fetch('/api/track/edit',{
+          fetch(api+'/api/track/edit',{
             method:'post',
             headers: {
               'Content-Type': 'application/json'
@@ -348,7 +348,7 @@ function Record() {
       const handleTDel=(e,track_id)=>{
         const id = trackEdi.findIndex((element)=>element.track_id === track_id);
         if(id !== undefined){
-          fetch('/api/track/delete',{
+          fetch(api+'/api/track/delete',{
             method:'post',
             headers: {
               'Content-Type': 'application/json'
@@ -368,7 +368,7 @@ function Record() {
 
     useEffect(() => {
       
-      fetch('/api/record')
+      fetch(api+'/api/record')
       .then((res) => res.json())
       .then((data) => {
         

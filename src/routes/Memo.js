@@ -11,7 +11,7 @@ function Memo() {
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState([]);
     const [add, setAdd] = useState('');
-    
+    const api = 'https://react-record-todo.herokuapp.com/';
     const Dref = useRef();
     const Sref = useRef();
     const word = useRef();
@@ -50,7 +50,7 @@ function Memo() {
       const id = search.findIndex((element)=>element.memo_id === memo_id);
       console.log(search[id].memo);
       if(id !== undefined &&  search[id].memo !== ''){
-        fetch('/api/memo/edit',{
+        fetch(api+'/api/memo/edit',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ function Memo() {
       const id = search.findIndex((element)=>element.memo_id === memo_id);
 
       if(id !== undefined){
-        fetch('/api/memo/delete',{
+        fetch(api+'/api/memo/delete',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -107,7 +107,7 @@ function Memo() {
     const handleAdd =() =>{
       if(add !== ''){
         
-        fetch('/api/memo/add',{
+        fetch(api+'/api/memo/add',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -128,7 +128,7 @@ function Memo() {
 
     useEffect(() => {
       
-      fetch('/api/memo')
+      fetch(api+'/api/memo')
       .then((res) => res.json())
       .then((data) => {
         return (
