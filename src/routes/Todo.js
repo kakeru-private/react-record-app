@@ -67,8 +67,8 @@ function Todo() {
               'deadline':`${deadline}`,
               'remarks':`${search[id].remarks}`
             },
-          ),
-          mode: 'no-cors'
+          )
+          
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -91,8 +91,8 @@ function Todo() {
           },
           body:JSON.stringify(
             {'todo_id':`${todo_id}`,},
-          ),
-          mode: 'no-cors'
+          )
+          
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -156,8 +156,8 @@ function Todo() {
               'remarks':`${remarks}`
             },
             
-            ),
-            mode: 'no-cors'
+            )
+            
         })
         .then((res) => res.json())
         .then((data) => data)
@@ -175,9 +175,7 @@ function Todo() {
 
     useEffect(() => {
       
-      fetch(api+'/todo',{
-        mode: 'no-cors'
-      })
+      fetch(api+'/todo')
       .then((res) => res.json())
       .then((data) => {
         return (

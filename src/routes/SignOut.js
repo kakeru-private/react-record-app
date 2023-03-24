@@ -9,8 +9,8 @@ function SignOut() {
   const handleSubmit= (e) =>{
     e.preventDefault();
     fetch(api+'/users/signout',{
-        method:'POST',
-        mode: 'no-cors'
+        method:'POST'
+        
       })
       .then((res) => res.json())
       .then((data) => {

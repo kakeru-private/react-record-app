@@ -40,9 +40,9 @@ function SignIn() {
           name:name,
           password:password
         }
+      
+        )
         
-        ),
-        mode: 'no-cors'
     })
     .then((res) => res.json())
     .then((data) => {

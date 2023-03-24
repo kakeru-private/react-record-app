@@ -23,8 +23,8 @@ function Delete() {
           password:password
         }
         
-        ),
-        mode: 'no-cors'
+        )
+        
     })
     .then((res) => res.json())
     .then((data) => {
@@ -72,8 +72,8 @@ function Delete() {
           password:password
         }
         
-        ),
-        mode: 'no-cors'
+        )
+        
     })
     .then((res) => res.json())
     .then((data) => {
