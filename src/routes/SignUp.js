@@ -24,7 +24,7 @@ function SignUp() {
         }
         
         ),
-        mode: 'cors'
+        mode: 'no-cors'
     })
     .then((res) => res.json())
     .then((data) => {
@@ -72,7 +72,7 @@ function SignUp() {
         }
         
         ),
-        mode: 'cors'
+        mode: 'no-cors'
     })
     .then((res) => res.json())
     .then((data) => {
