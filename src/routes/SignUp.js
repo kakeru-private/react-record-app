@@ -61,11 +61,9 @@ function SignUp() {
     const name = formValues.username;
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
-
-    console.log(name,mailaddress,password);
     fetch(api+'/users/',{
       method:'POST',
-      headers:{'Content-Type': 'text/plain'},
+      headers:{'Content-Type': 'application/json'},
       body: JSON.stringify(
         {
           name:name,
