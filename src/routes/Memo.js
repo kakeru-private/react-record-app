@@ -53,7 +53,7 @@ function Memo() {
         fetch(api+'/memo/edit',{
           method:'post',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain'
           },
           body:JSON.stringify(
             {
@@ -80,7 +80,7 @@ function Memo() {
         fetch(api+'/memo/delete',{
           method:'post',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain'
           },
           body:JSON.stringify(
             {'memo_id':`${memo_id}`,},
@@ -112,7 +112,7 @@ function Memo() {
         fetch(api+'/memo/add',{
           method:'post',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain'
           },
           body:JSON.stringify(
             {'memo':`${add}`}

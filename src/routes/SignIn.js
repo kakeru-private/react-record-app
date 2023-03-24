@@ -34,7 +34,7 @@ function SignIn() {
     const password = formValues.password;
     fetch(api+'/users/signin',{
       method:'POST',
-      headers:{'Content-Type': 'application/json'},
+      headers:{'Content-Type': 'text/plain'},
       body: JSON.stringify(
         {
           name:name,

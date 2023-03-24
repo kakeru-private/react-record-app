@@ -52,7 +52,7 @@ function Book() {
         fetch(api+'/book/edit',{
           method:'post',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain'
           },
           body:JSON.stringify(
             {
@@ -84,7 +84,7 @@ function Book() {
         fetch(api+'/book/delete',{
           method:'post',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain'
           },
           body:JSON.stringify(
             {'book_id':`${book_id}`,},
@@ -188,7 +188,7 @@ function Book() {
         } 
         fetch(api+'/book/add',{
           method:'POST',
-          headers:{'Content-Type': 'application/json'},
+          headers:{'Content-Type': 'text/plain'},
           body: JSON.stringify(
             {
               'isbn':`${isbn}`,

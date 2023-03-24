@@ -15,7 +15,7 @@ function Delete() {
     const password = formValues.password;
     fetch(api+'/users/delete',{
       method:'POST',
-      headers:{'Content-Type': 'application/json'},
+      headers:{'Content-Type': 'text/plain'},
       body: JSON.stringify(
         {
           name:name,
@@ -64,7 +64,7 @@ function Delete() {
     const password = formValues.password;
     fetch(api+'/users',{
       method:'POST',
-      headers:{'Content-Type': 'application/json'},
+      headers:{'Content-Type': 'text/plain'},
       body: JSON.stringify(
         {
           name:name,

@@ -79,7 +79,7 @@ function Record() {
         fetch(api+'/record/edit',{
           method:'post',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain'
           },
           body:JSON.stringify(
             {
@@ -111,7 +111,7 @@ function Record() {
         fetch(api+'/record/delete',{
           method:'post',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain'
           },
           body:JSON.stringify(
             {'record_id':`${record_id}`,},
@@ -219,7 +219,7 @@ function Record() {
         } 
         fetch(api+'/record/add',{
           method:'POST',
-          headers:{'Content-Type': 'application/json'},
+          headers:{'Content-Type': 'text/plain'},
           body: JSON.stringify(
             {
               'title':`${title}`,
@@ -280,7 +280,7 @@ function Record() {
               fetch(api+'/track/add',{
                 method:'post',
                 headers: {
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'text/plain'
                 },
                 body:JSON.stringify(
                   {
@@ -331,7 +331,7 @@ function Record() {
           fetch(api+'/track/edit',{
             method:'post',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'text/plain'
             },
             body:JSON.stringify(
               {
@@ -356,7 +356,7 @@ function Record() {
           fetch(api+'/track/delete',{
             method:'post',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'text/plain'
             },
             body:JSON.stringify(
               {

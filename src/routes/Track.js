@@ -74,7 +74,7 @@ function Track() {
         fetch(api+'/track/edit',{
           method:'post',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain'
           },
           body:JSON.stringify(
             {
@@ -102,7 +102,7 @@ function Track() {
         fetch(api+'/track/delete',{
           method:'post',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain'
           },
           body:JSON.stringify(
             {'track_id':`${track_id}`,},
@@ -129,7 +129,7 @@ function Track() {
         
         fetch(api+'/track/add',{
           method:'POST',
-          headers:{'Content-Type': 'application/json'},
+          headers:{'Content-Type': 'text/plain'},
           body: JSON.stringify(
             {
               'title':`${formValues.title}`,
