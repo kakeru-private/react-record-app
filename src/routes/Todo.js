@@ -58,7 +58,7 @@ function Todo() {
         fetch(api+'/api/todo/edit',{
           method:'post',
           headers: {
-            "Content-type": "text/plain" 
+            'Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {
@@ -87,7 +87,7 @@ function Todo() {
         fetch(api+'/api/todo/delete',{
           method:'post',
           headers: {
-            "Content-type": "text/plain" 
+            'Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {'todo_id':`${todo_id}`,},
@@ -148,7 +148,7 @@ function Todo() {
         } 
         fetch(api+'/api/todo/add',{
           method:'POST',
-          headers:{"Content-type": "text/plain" },
+          headers:{'Content-Type': 'application/json'},
           body: JSON.stringify(
             {
               'todo':`${todo}`,

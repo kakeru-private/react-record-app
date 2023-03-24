@@ -33,7 +33,7 @@ function ChangePass() {
     const password = formValues.password;
     fetch(api+'/api/users/changepass',{
       method:'POST',
-      headers:{"Content-type": "text/plain" },
+      headers:{'Content-Type': 'application/json'},
       body: JSON.stringify(
         {
           name:name,
