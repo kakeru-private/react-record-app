@@ -52,7 +52,7 @@ function Home() {
   useEffect(() => {
       
     fetch(api+'/api/',{
-       mode: 'cors'
+       mode: 'no-cors'
     })
     .then((res) => res.json())
     .then((data) => {

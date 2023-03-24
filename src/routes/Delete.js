@@ -24,7 +24,7 @@ function Delete() {
         }
         
         ),
-        mode: 'cors'
+        mode: 'no-cors'
     })
     .then((res) => res.json())
     .then((data) => {
@@ -73,7 +73,7 @@ function Delete() {
         }
         
         ),
-        mode: 'cors'
+        mode: 'no-cors'
     })
     .then((res) => res.json())
     .then((data) => {

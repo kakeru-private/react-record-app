@@ -68,7 +68,7 @@ function Todo() {
               'remarks':`${search[id].remarks}`
             },
           ),
-          mode: 'cors'
+          mode: 'no-cors'
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -92,7 +92,7 @@ function Todo() {
           body:JSON.stringify(
             {'todo_id':`${todo_id}`,},
           ),
-          mode: 'cors'
+          mode: 'no-cors'
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -157,7 +157,7 @@ function Todo() {
             },
             
             ),
-            mode: 'cors'
+            mode: 'no-cors'
         })
         .then((res) => res.json())
         .then((data) => data)
@@ -176,7 +176,7 @@ function Todo() {
     useEffect(() => {
       
       fetch(api+'/api/todo',{
-        mode: 'cors'
+        mode: 'no-cors'
       })
       .then((res) => res.json())
       .then((data) => {

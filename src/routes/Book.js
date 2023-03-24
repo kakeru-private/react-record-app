@@ -65,7 +65,7 @@ function Book() {
               'site':`${search[id].site}`,
             },
           ),
-          mode: 'cors'
+          mode: 'no-cors'
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -89,7 +89,7 @@ function Book() {
           body:JSON.stringify(
             {'book_id':`${book_id}`,},
           ),
-          mode: 'cors'
+          mode: 'no-cors'
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -200,7 +200,7 @@ function Book() {
             },
             
             ),
-            mode: 'cors'
+            mode: 'no-cors'
         })
         .then((res) => res.json())
         .then((data) => data)
@@ -219,7 +219,7 @@ function Book() {
     useEffect(() => {
       
       fetch(api+'/api/book',{
-        mode: 'cors'
+        mode: 'no-cors'
       })
       .then((res) => res.json())
       .then((data) => {

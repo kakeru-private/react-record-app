@@ -42,7 +42,7 @@ function ChangePass() {
         }
         
         ),
-        mode: 'cors'
+        mode: 'no-cors'
     })
     .then((res) => res.json())
     .then((data) => {

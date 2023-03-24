@@ -61,7 +61,7 @@ function Memo() {
               'memo':`${search[id].memo}`,
             },
           ),
-          mode: 'cors'
+          mode: 'no-cors'
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -85,7 +85,7 @@ function Memo() {
           body:JSON.stringify(
             {'memo_id':`${memo_id}`,},
           ),
-          mode: 'cors'
+          mode: 'no-cors'
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -117,7 +117,7 @@ function Memo() {
           body:JSON.stringify(
             {'memo':`${add}`}
           ),
-          mode: 'cors'
+          mode: 'no-cors'
         })
         .then((res) => res.json())
         .then((data) => data);
@@ -132,7 +132,7 @@ function Memo() {
     useEffect(() => {
       
       fetch(api+'/api/memo',{
-        mode: 'cors'
+        mode: 'no-cors'
       })
       .then((res) => res.json())
       .then((data) => {
