@@ -50,7 +50,7 @@ function Memo() {
       const id = search.findIndex((element)=>element.memo_id === memo_id);
       console.log(search[id].memo);
       if(id !== undefined &&  search[id].memo !== ''){
-        fetch(api+'/api/memo/edit',{
+        fetch(api+'/memo/edit',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -77,7 +77,7 @@ function Memo() {
       const id = search.findIndex((element)=>element.memo_id === memo_id);
 
       if(id !== undefined){
-        fetch(api+'/api/memo/delete',{
+        fetch(api+'/memo/delete',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -109,7 +109,7 @@ function Memo() {
     const handleAdd =() =>{
       if(add !== ''){
         
-        fetch(api+'/api/memo/add',{
+        fetch(api+'/memo/add',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -131,7 +131,7 @@ function Memo() {
 
     useEffect(() => {
       
-      fetch(api+'/api/memo',{
+      fetch(api+'/memo',{
         mode: 'no-cors'
       })
       .then((res) => res.json())

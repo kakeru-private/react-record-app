@@ -31,7 +31,7 @@ function ChangePass() {
     const name = formValues.username;
     const mail = formValues.mailaddress;
     const password = formValues.password;
-    fetch(api+'/api/users/changepass',{
+    fetch(api+'/users/changepass',{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
       body: JSON.stringify(

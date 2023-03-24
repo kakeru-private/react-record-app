@@ -51,7 +51,7 @@ function Home() {
 
   useEffect(() => {
       
-    fetch(api+'/api/',{
+    fetch(api+'/',{
        mode: 'no-cors'
     })
     .then((res) => res.json())

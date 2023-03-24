@@ -71,7 +71,7 @@ function Track() {
       const id = search.findIndex((element)=>element.track_id === track_id);
       
       if(id !== undefined &&  search[id].title !== '' &&  search[id].artist !== ''){
-        fetch(api+'/api/track/edit',{
+        fetch(api+'/track/edit',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ function Track() {
       const id = search.findIndex((element)=>element.track_id === track_id);
 
       if(id !== undefined){
-        fetch(api+'/api/track/delete',{
+        fetch(api+'/track/delete',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -127,7 +127,7 @@ function Track() {
       const id = rid.indexOf((element)=>element.record_id === formValues.fk_rid);
       if(formValues.title !== '' && formValues.artist !== '' && id !== undefined){
         
-        fetch(api+'/api/track/add',{
+        fetch(api+'/track/add',{
           method:'POST',
           headers:{'Content-Type': 'application/json'},
           body: JSON.stringify(
@@ -156,7 +156,7 @@ function Track() {
 
     useEffect(() => {
       
-      fetch(api+'/api/track',{
+      fetch(api+'/track',{
         mode: 'no-cors'
       })
       .then((res) => res.json())

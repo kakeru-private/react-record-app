@@ -55,7 +55,7 @@ function Todo() {
         if(deadline === ''){
           deadline = time;
         }
-        fetch(api+'/api/todo/edit',{
+        fetch(api+'/todo/edit',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ function Todo() {
       const id = search.findIndex((element)=>element.todo_id === todo_id);
 
       if(id !== undefined){
-        fetch(api+'/api/todo/delete',{
+        fetch(api+'/todo/delete',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -146,7 +146,7 @@ function Todo() {
         if(deadline === ''){
           deadline = time;
         } 
-        fetch(api+'/api/todo/add',{
+        fetch(api+'/todo/add',{
           method:'POST',
           headers:{'Content-Type': 'application/json'},
           body: JSON.stringify(
@@ -175,7 +175,7 @@ function Todo() {
 
     useEffect(() => {
       
-      fetch(api+'/api/todo',{
+      fetch(api+'/todo',{
         mode: 'no-cors'
       })
       .then((res) => res.json())

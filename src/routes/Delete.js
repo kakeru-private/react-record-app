@@ -13,7 +13,7 @@ function Delete() {
     const name = formValues.username;
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
-    fetch(api+'/api/users/delete',{
+    fetch(api+'/users/delete',{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
       body: JSON.stringify(
@@ -62,7 +62,7 @@ function Delete() {
     const name = formValues.username;
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
-    fetch(api+'/api/users',{
+    fetch(api+'/users',{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
       body: JSON.stringify(

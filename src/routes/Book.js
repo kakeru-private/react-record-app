@@ -49,7 +49,7 @@ function Book() {
       const id = search.findIndex((element)=>element.book_id === book_id);
       console.log(search[id].title);
       if(id !== undefined && search[id].title !== ''){
-        fetch(api+'/api/book/edit',{
+        fetch(api+'/book/edit',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ function Book() {
       const id = search.findIndex((element)=>element.book_id === book_id);
 
       if(id !== undefined){
-        fetch(api+'/api/book/delete',{
+        fetch(api+'/book/delete',{
           method:'post',
           headers: {
             'Content-Type': 'application/json'
@@ -186,7 +186,7 @@ function Book() {
         if(release_date === ''){
           release_date = time;
         } 
-        fetch(api+'/api/book/add',{
+        fetch(api+'/book/add',{
           method:'POST',
           headers:{'Content-Type': 'application/json'},
           body: JSON.stringify(
@@ -218,7 +218,7 @@ function Book() {
 
     useEffect(() => {
       
-      fetch(api+'/api/book',{
+      fetch(api+'/book',{
         mode: 'no-cors'
       })
       .then((res) => res.json())
