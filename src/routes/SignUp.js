@@ -63,7 +63,7 @@ function SignUp() {
     const password = formValues.password;
     fetch(api+'/users/',{
       method:'POST',
-      headers:{'Content-Type': 'application/json'},
+      headers:{'Content-Type': 'text/plain'},
       body: JSON.stringify(
         {
           name:name,
