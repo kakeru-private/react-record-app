@@ -74,7 +74,10 @@ function SignUp() {
         ),
         mode: 'no-cors'
     })
-    .then((res) => res.json())
+    .then((res) => {
+      console.log(res),
+      res.json()
+    })
     .then((data) => {
       return(
         /*console.log(data.length),*/
