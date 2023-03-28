@@ -9,7 +9,8 @@ function SignOut() {
   const handleSubmit= (e) =>{
     e.preventDefault();
     fetch('https://react-record-todo.herokuapp.com/users/signout',{
-        method:'POST'
+        method:'POST',mode:'cors',credentials: 'include',
+        headers:{'Content-Type': 'text/plain'},
         
       })
       .then((res) => res.json())
