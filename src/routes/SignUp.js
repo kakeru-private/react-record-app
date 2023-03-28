@@ -15,15 +15,15 @@ function SignUp() {
     const password = formValues.password;
     fetch('https://react-record-todo.herokuapp.com/users/signup',{
       method:'POST',mode:'cors',credentials: 'include',
-      headers:{'Content-Type': 'text/plain'},
-      body: 
+      headers:{'Accept':'application/json','Content-Type': 'application/json'},
+      body: JSON.stringify(
         {
           name:name,
           mail:mailaddress,
           password:password
         }
         
-        
+        )
         
     })
     .then((res) => res.json())
@@ -63,15 +63,15 @@ function SignUp() {
     const password = formValues.password;
     fetch('https://react-record-todo.herokuapp.com/users/',{
       method:'POST',mode:'cors',credentials: 'include',
-      headers:{'Content-Type': 'text/plain'},
-      body: 
+      headers:{'Accept':'application/json','Content-Type': 'application/json'},
+      body: JSON.stringify(
         {
           name:name,
           mail:mailaddress,
           password:password
         }
         
-        
+        )
         
     })
     .then((res) => res.json())

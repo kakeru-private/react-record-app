@@ -58,7 +58,7 @@ function Todo() {
         fetch(api+'/todo/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
-            'Content-Type': 'text/plain'
+            'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {
@@ -87,7 +87,7 @@ function Todo() {
         fetch(api+'/todo/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
-            'Content-Type': 'text/plain'
+            'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {'todo_id':`${todo_id}`,},
@@ -148,7 +148,7 @@ function Todo() {
         } 
         fetch(api+'/todo/add',{
           method:'POST',mode:'cors',credentials: 'include',
-          headers:{'Content-Type': 'text/plain'},
+          headers:{'Accept':'application/json','Content-Type': 'application/json'},
           body: JSON.stringify(
             {
               'todo':`${todo}`,

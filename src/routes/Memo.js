@@ -53,7 +53,7 @@ function Memo() {
         fetch(api+'/memo/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
-            'Content-Type': 'text/plain'
+            'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {
@@ -80,7 +80,7 @@ function Memo() {
         fetch(api+'/memo/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
-            'Content-Type': 'text/plain'
+            'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {'memo_id':`${memo_id}`,},
@@ -112,7 +112,7 @@ function Memo() {
         fetch(api+'/memo/add',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
-            'Content-Type': 'text/plain'
+            'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {'memo':`${add}`}

@@ -52,7 +52,7 @@ function Book() {
         fetch(api+'/book/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
-            'Content-Type': 'text/plain'
+            'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {
@@ -84,7 +84,7 @@ function Book() {
         fetch(api+'/book/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
-            'Content-Type': 'text/plain'
+            'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {'book_id':`${book_id}`,},
@@ -188,7 +188,7 @@ function Book() {
         } 
         fetch(api+'/book/add',{
           method:'POST',mode:'cors',credentials: 'include',
-          headers:{'Content-Type': 'text/plain'},
+          headers:{'Accept':'application/json','Content-Type': 'application/json'},
           body: JSON.stringify(
             {
               'isbn':`${isbn}`,

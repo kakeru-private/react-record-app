@@ -34,7 +34,7 @@ function SignIn() {
     const password = formValues.password;
     fetch(api+'/users/signin',{
       method:'POST',mode:'cors',credentials: 'include',
-      headers:{'Content-Type': 'text/plain'},
+      headers:{'Accept':'application/json','Content-Type': 'application/json'},
       body: JSON.stringify(
         {
           name:name,

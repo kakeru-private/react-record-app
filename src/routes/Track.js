@@ -74,7 +74,7 @@ function Track() {
         fetch(api+'/track/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
-            'Content-Type': 'text/plain'
+            'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {
@@ -102,7 +102,7 @@ function Track() {
         fetch(api+'/track/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
-            'Content-Type': 'text/plain'
+            'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {'track_id':`${track_id}`,},
@@ -129,7 +129,7 @@ function Track() {
         
         fetch(api+'/track/add',{
           method:'POST',mode:'cors',credentials: 'include',
-          headers:{'Content-Type': 'text/plain'},
+          headers:{'Accept':'application/json','Content-Type': 'application/json'},
           body: JSON.stringify(
             {
               'title':`${formValues.title}`,

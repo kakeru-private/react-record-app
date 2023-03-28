@@ -79,7 +79,7 @@ function Record() {
         fetch(api+'/record/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
-            'Content-Type': 'text/plain'
+            'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {
@@ -111,7 +111,7 @@ function Record() {
         fetch(api+'/record/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
-            'Content-Type': 'text/plain'
+            'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
             {'record_id':`${record_id}`,},
@@ -219,7 +219,7 @@ function Record() {
         } 
         fetch(api+'/record/add',{
           method:'POST',mode:'cors',credentials: 'include',
-          headers:{'Content-Type': 'text/plain'},
+          headers:{'Accept':'application/json','Content-Type': 'application/json'},
           body: JSON.stringify(
             {
               'title':`${title}`,
@@ -280,7 +280,7 @@ function Record() {
               fetch(api+'/track/add',{
                 method:'POST',mode:'cors',credentials: 'include',
                 headers: {
-                  'Content-Type': 'text/plain'
+                  'Accept':'application/json','Content-Type': 'application/json'
                 },
                 body:JSON.stringify(
                   {
@@ -331,7 +331,7 @@ function Record() {
           fetch(api+'/track/edit',{
             method:'POST',mode:'cors',credentials: 'include',
             headers: {
-              'Content-Type': 'text/plain'
+              'Accept':'application/json','Content-Type': 'application/json'
             },
             body:JSON.stringify(
               {
@@ -356,7 +356,7 @@ function Record() {
           fetch(api+'/track/delete',{
             method:'POST',mode:'cors',credentials: 'include',
             headers: {
-              'Content-Type': 'text/plain'
+              'Accept':'application/json','Content-Type': 'application/json'
             },
             body:JSON.stringify(
               {
