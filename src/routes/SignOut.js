@@ -9,21 +9,15 @@ function SignOut() {
 
   const handleSubmit= (e) =>{
     e.preventDefault();
-    
-      uid === undefined ? 
-      (
-        setMisMsg('サインインしていません')
-      )
-      : 
-      (
-        setSucMsg('サインアウトしました'),
-        setUid(undefined),
-        setTimeout(()=>{
-          window.location.reload('/users')
-        },1*500)
-      )
-     
-    
+    if(uid === undefined){
+      setMisMsg('サインインしていません')
+    }else{
+      setSucMsg('サインアウトしました')
+      setUid(undefined)
+      setTimeout(()=>{
+        window.location.reload('/users')
+      },1*500)
+    }
   };
 
   return (
