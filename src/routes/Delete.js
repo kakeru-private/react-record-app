@@ -8,7 +8,7 @@ function Delete() {
   const [formErrors,setFormErrors] = useState({});
   const [isSubmit,setIsSubmit] = useState(false);
   const [sucMsg,setSucMsg] = useState('');
-  const api = 'https://react-record-todo.herokuapp.com';
+  
   const handleSuc=()=>{
     const name = formValues.username;
     const mailaddress = formValues.mailaddress;

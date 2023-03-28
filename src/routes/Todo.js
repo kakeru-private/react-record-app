@@ -15,7 +15,7 @@ function Todo() {
     const [value, setValue] = useState(init);
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState(init);
-    const api = 'https://react-record-todo.herokuapp.com';
+    
 
     
   

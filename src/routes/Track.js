@@ -20,7 +20,7 @@ function Track() {
     const Dref = useRef();
     const Sref = useRef();
     const word = useRef();
-    const api = 'https://react-record-todo.herokuapp.com';
+    
 
     const handleSearch =() =>{
       setSearch(value.filter((track) => track.title.toLowerCase().includes(word.current.value.toLowerCase()) || track.artist.toLowerCase().includes(word.current.value.toLowerCase()) 

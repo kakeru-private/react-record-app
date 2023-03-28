@@ -9,7 +9,7 @@ function Home() {
   const [memoValue, setMemoValue] = useState(mInit);
   const [todoSearchValue, setTodoSearchValue] = useState(tInit);
   const [memoSearchValue, setMemoSearchValue] = useState(mInit);
-  const api = 'https://react-record-todo.herokuapp.com';
+  
 
   const TDref = useRef();
   const TSref = useRef();

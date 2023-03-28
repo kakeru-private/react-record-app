@@ -12,7 +12,8 @@ function Memo() {
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState(init);
     const [add, setAdd] = useState('');
-    const api = 'https://react-record-todo.herokuapp.com';
+    const [rend,setRend] = useState(false);
+    
     const Dref = useRef();
     const Sref = useRef();
     const word = useRef();
@@ -144,7 +145,8 @@ function Memo() {
           data.length > 0 ?
           (
             setValue(data) ,
-            setSearch(data)
+            setSearch(data),
+            setRend(true)
           )
           :
           (
@@ -225,7 +227,7 @@ function Memo() {
                     </tbody>
 
                     
-                      {search.map(({memo,update_date,memo_id})=> (
+                      {rend ? search.map(({memo,update_date,memo_id})=> (
                       <tbody>
                         <tr key={memo_id}>
                           <td>
@@ -249,7 +251,7 @@ function Memo() {
                         
                         </tr>
                         </tbody>
-                      ))}
+                      )):''}
                      
                         <br/><br/>
                         <tr id='add'>
