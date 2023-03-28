@@ -13,13 +13,16 @@ function Record() {
   const date = new Date();
   const time = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
   const initialValues = {title:'',release_date:time,artist:'',record_num:'',numOfTrack:1,site:''};
+  const rInit = [{record_num:'',release_date:time,record_id:'',title:'',artist:'',numOfTrack:0,site:''}];
+  const tInit = [{track_id:'',tTitle:'',fk_rid:'',artist:''}];
+  const tfInit = [{title:'',fk_rid:'',artist:''}];
   const [formValues,setFormValues] = useState(initialValues);
-  const [trackForm,setTrackForm] = useState([]);
-  const [value, setValue] = useState([]);
+  const [trackForm,setTrackForm] = useState(tInit);
+  const [value, setValue] = useState(rInit);
     const [ins,setIns] = useState(0);
-    const [search, setSearch] = useState([]);
-    const [track,setTrack] = useState([]);
-    const [trackEdi, setTrackEdi] = useState([]);
+    const [search, setSearch] = useState(rInit);
+    const [track,setTrack] = useState(tInit);
+    const [trackEdi, setTrackEdi] = useState(tInit);
     const api = 'https://react-record-todo.herokuapp.com';
     
   
@@ -385,11 +388,22 @@ function Record() {
         
         
         return (
-          setValue(data[0]) ,
-          setSearch(data[0]),
-          setTrack(data[1]) ,
-          setTrackEdi(data[1]),
-          setTrackForm(data[2]),
+          data.length > 0 ? 
+          (
+            setValue(data[0]) ,
+            setSearch(data[0]),
+            setTrack(data[1]) ,
+            setTrackEdi(data[1]),
+            setTrackForm(data[2])
+          ) 
+          :
+           (
+            setValue(rInit) ,
+            setSearch(rInit),
+            setTrack(tInit) ,
+            setTrackEdi(tInit),
+            setTrackForm(tfInit)
+          ),
           word.current.value=''
         )});
           

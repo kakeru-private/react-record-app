@@ -8,10 +8,12 @@ import AncLink from '../components/AncLink';
 
 
 function Track() {
-    const [value, setValue] = useState([]);
+  const init = [{title:'',track_id:'',tTitle:'',artist:'',fk_rid:''}];
+  const rInit = [{record_id:'',title:''}];
+    const [value, setValue] = useState(init);
     const [ins,setIns] = useState(0);
-    const [search, setSearch] = useState([]);
-    const [rid,setRid] = useState([]);
+    const [search, setSearch] = useState(init);
+    const [rid,setRid] = useState(rInit);
     const initialValues = {title:'',fk_rid:0,artist:''};
     const [formValues,setFormValues] = useState(initialValues);
   
@@ -167,9 +169,19 @@ function Track() {
         
         
         return (
-          setValue(data[0]) ,
-          setSearch(data[0]),
-          setRid(data[1]),
+          data.length > 0 ?
+          (
+            setValue(data[0]) ,
+            setSearch(data[0]),
+            setRid(data[1])
+          )
+          :
+          (
+            setValue(init) ,
+            setSearch(init),
+            setRid(rInit)
+          ),
+          
           word.current.value=''
         )});
           

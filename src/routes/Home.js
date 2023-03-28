@@ -3,10 +3,12 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import SearchIcon from '@mui/icons-material/Search';
 
 function Home() {
-  const [todoValue, setTodoValue] = useState([]);
-  const [memoValue, setMemoValue] = useState([]);
-  const [todoSearchValue, setTodoSearchValue] = useState([]);
-  const [memoSearchValue, setMemoSearchValue] = useState([]);
+  const tInit = [{todo:'',deadline:'',todo_id:'',remarks:''}];
+  const mInit = [{memo:'',update_date:'',memo_id:''}];
+  const [todoValue, setTodoValue] = useState(tInit);
+  const [memoValue, setMemoValue] = useState(mInit);
+  const [todoSearchValue, setTodoSearchValue] = useState(tInit);
+  const [memoSearchValue, setMemoSearchValue] = useState(mInit);
   const api = 'https://react-record-todo.herokuapp.com';
 
   const TDref = useRef();
@@ -60,11 +62,21 @@ function Home() {
     .then((res) => res.json())
     .then((data) => {
       return (
+        data.length > 0 ?
+        (
+          setMemoValue(data[0]),
+          setTodoValue(data[1]),
+          setMemoSearchValue(data[0]),
+          setTodoSearchValue(data[1])
+        )
+        :
+        (
+          setMemoValue(mInit),
+          setTodoValue(tInit),
+          setMemoSearchValue(mInit),
+          setTodoSearchValue(tInit)
+        ),
         
-        setMemoValue(data[0]),
-        setTodoValue(data[1]),
-        setMemoSearchValue(data[0]),
-        setTodoSearchValue(data[1]),
         word.current.value=''
       )});
     

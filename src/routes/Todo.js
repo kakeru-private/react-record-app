@@ -11,9 +11,10 @@ function Todo() {
     const time = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().slice(0,16);
     const initialValues = {todo:'',deadline:time,remarks:''};
     const [formValues,setFormValues] = useState(initialValues);
-    const [value, setValue] = useState([]);
+    const init = [{todo:'',deadline:time,todo_id:'',remarks:'',fk_uid:''}];
+    const [value, setValue] = useState(init);
     const [ins,setIns] = useState(0);
-    const [search, setSearch] = useState([]);
+    const [search, setSearch] = useState(init);
     const api = 'https://react-record-todo.herokuapp.com';
 
     
@@ -184,8 +185,17 @@ function Todo() {
       .then((res) => res.json())
       .then((data) => {
         return (
-          setValue(data) ,
-          setSearch(data),
+          data.length > 0 ?
+          (
+            setValue(data) ,
+            setSearch(data)
+          )
+          :
+          (
+            setValue(init) ,
+            setSearch(init)
+          ),
+          
           word.current.value=''
         )});
       

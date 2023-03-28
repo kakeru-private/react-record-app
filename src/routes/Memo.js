@@ -7,9 +7,10 @@ import SaveAsIcon from '@mui/icons-material/SaveAs';
 import AncLink from '../components/AncLink';
 
 function Memo() {
-  const [value, setValue] = useState([]);
+  const init = [{memo:'',update_date:'',memo_id:'',fk_uid:''}];
+  const [value, setValue] = useState(init);
     const [ins,setIns] = useState(0);
-    const [search, setSearch] = useState([]);
+    const [search, setSearch] = useState(init);
     const [add, setAdd] = useState('');
     const api = 'https://react-record-todo.herokuapp.com';
     const Dref = useRef();
@@ -140,8 +141,18 @@ function Memo() {
       .then((res) => res.json())
       .then((data) => {
         return (
-          setValue(data) ,
-          setSearch(data)
+          data.length > 0 ?
+          (
+            setValue(data) ,
+            setSearch(data)
+          )
+          :
+          (
+            setValue(init) ,
+            setSearch(init)
+          ) 
+
+          
         )});
       
     }, [ins])

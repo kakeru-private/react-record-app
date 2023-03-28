@@ -13,10 +13,11 @@ function Book() {
   const date = new Date();
   const time = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
   const initialValues = {isbn:'',title:'',author:'',publisher:'',site:'',release_date:time};
+  const init = [{title:'',release_date:'',book_id:'',author:'',fk_uid:'',site:'',isbn:'',publisher:''}];
   const [formValues,setFormValues] = useState(initialValues);
-  const [value, setValue] = useState([]);
+  const [value, setValue] = useState(init);
     const [ins,setIns] = useState(0);
-    const [search, setSearch] = useState([]);
+    const [search, setSearch] = useState(init);
 
 
     const Dref = useRef();
@@ -227,8 +228,17 @@ function Book() {
       .then((res) => res.json())
       .then((data) => {
         return (
-          setValue(data) ,
-          setSearch(data),
+          data.length > 0 ?
+          (
+            setValue(data) ,
+            setSearch(data)
+          )
+          :
+          (
+            setValue(init) ,
+            setSearch(init)
+          ),
+          
           word.current.value=''
         )});
       
