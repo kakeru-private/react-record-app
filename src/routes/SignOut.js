@@ -10,7 +10,7 @@ function SignOut() {
   const handleSubmit= (e) =>{
     e.preventDefault();
     
-      uid ===  undefined ? 
+      uid === undefined ? 
       (
         setMisMsg('サインインしていません')
       )
