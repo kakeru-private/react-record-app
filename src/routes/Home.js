@@ -51,7 +51,9 @@ function Home() {
 
   useEffect(() => {
       
-    fetch('https://react-record-todo.herokuapp.com/')
+    fetch('https://react-record-todo.herokuapp.com/',{
+      method:'GET',mode:'cors',credentials: 'include',
+    })
     .then((res) => res.json())
     .then((data) => {
       return (

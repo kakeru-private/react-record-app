@@ -156,7 +156,9 @@ function Track() {
 
     useEffect(() => {
       
-      fetch('https://react-record-todo.herokuapp.com/track')
+      fetch('https://react-record-todo.herokuapp.com/track',{
+        method:'GET',mode:'cors',credentials: 'include',
+      })
       .then((res) => res.json())
       .then((data) => {
         

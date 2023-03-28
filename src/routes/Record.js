@@ -374,7 +374,9 @@ function Record() {
 
     useEffect(() => {
       
-      fetch('https://react-record-todo.herokuapp.com/record')
+      fetch('https://react-record-todo.herokuapp.com/record',{
+        method:'GET',mode:'cors',credentials: 'include',
+      })
       .then((res) => res.json())
       .then((data) => {
         

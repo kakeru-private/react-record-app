@@ -175,7 +175,9 @@ function Todo() {
 
     useEffect(() => {
       
-      fetch('https://react-record-todo.herokuapp.com/todo')
+      fetch('https://react-record-todo.herokuapp.com/todo',{
+        method:'GET',mode:'cors',credentials: 'include',
+      })
       .then((res) => res.json())
       .then((data) => {
         return (

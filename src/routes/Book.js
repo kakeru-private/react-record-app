@@ -218,7 +218,9 @@ function Book() {
 
     useEffect(() => {
       
-      fetch('https://react-record-todo.herokuapp.com/book')
+      fetch('https://react-record-todo.herokuapp.com/book',{
+        method:'GET',mode:'cors',credentials: 'include',
+      })
       .then((res) => res.json())
       .then((data) => {
         return (

@@ -131,7 +131,9 @@ function Memo() {
 
     useEffect(() => {
       
-      fetch('https://react-record-todo.herokuapp.com/memo')
+      fetch('https://react-record-todo.herokuapp.com/memo',{
+        method:'GET',mode:'cors',credentials: 'include',
+      })
       .then((res) => res.json())
       .then((data) => {
         return (
