@@ -31,7 +31,7 @@ function ChangePass() {
     const name = formValues.username;
     const mail = formValues.mailaddress;
     const password = formValues.password;
-    fetch(api+'/users/changepass',{
+    fetch('https://react-record-todo.herokuapp.com/users/changepass',{
       method:'POST',mode:'cors',credentials: 'include',
       headers:{'Accept':'application/json','Content-Type': 'application/json'},
       body: JSON.stringify(

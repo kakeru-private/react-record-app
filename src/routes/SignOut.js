@@ -8,7 +8,7 @@ function SignOut() {
   const api = 'https://react-record-todo.herokuapp.com';
   const handleSubmit= (e) =>{
     e.preventDefault();
-    fetch(api+'/users/signout',{
+    fetch('https://react-record-todo.herokuapp.com/users/signout',{
         method:'POST'
         
       })

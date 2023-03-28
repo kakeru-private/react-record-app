@@ -49,7 +49,7 @@ function Book() {
       const id = search.findIndex((element)=>element.book_id === book_id);
       console.log(search[id].title);
       if(id !== undefined && search[id].title !== ''){
-        fetch(api+'/book/edit',{
+        fetch('https://react-record-todo.herokuapp.com/book/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -81,7 +81,7 @@ function Book() {
       const id = search.findIndex((element)=>element.book_id === book_id);
 
       if(id !== undefined){
-        fetch(api+'/book/delete',{
+        fetch('https://react-record-todo.herokuapp.com/book/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -186,7 +186,7 @@ function Book() {
         if(release_date === ''){
           release_date = time;
         } 
-        fetch(api+'/book/add',{
+        fetch('https://react-record-todo.herokuapp.com/book/add',{
           method:'POST',mode:'cors',credentials: 'include',
           headers:{'Accept':'application/json','Content-Type': 'application/json'},
           body: JSON.stringify(
@@ -218,7 +218,7 @@ function Book() {
 
     useEffect(() => {
       
-      fetch(api+'/book')
+      fetch('https://react-record-todo.herokuapp.com/book')
       .then((res) => res.json())
       .then((data) => {
         return (

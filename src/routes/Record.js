@@ -76,7 +76,7 @@ function Record() {
         if(release_date === ''){
           release_date = time;
         }
-        fetch(api+'/record/edit',{
+        fetch('https://react-record-todo.herokuapp.com/record/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -108,7 +108,7 @@ function Record() {
       const id = search.findIndex((element)=>element.record_id === record_id);
 
       if(id !== undefined){
-        fetch(api+'/record/delete',{
+        fetch('https://react-record-todo.herokuapp.com/record/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -217,7 +217,7 @@ function Record() {
         if(release_date === ''){
           release_date = time;
         } 
-        fetch(api+'/record/add',{
+        fetch('https://react-record-todo.herokuapp.com/record/add',{
           method:'POST',mode:'cors',credentials: 'include',
           headers:{'Accept':'application/json','Content-Type': 'application/json'},
           body: JSON.stringify(
@@ -277,7 +277,7 @@ function Record() {
       const handleTrackAdd=(e,index)=>{
       
             if(trackForm[index].title !== '' && trackForm[index].artist !== ''){
-              fetch(api+'/track/add',{
+              fetch('https://react-record-todo.herokuapp.com/track/add',{
                 method:'POST',mode:'cors',credentials: 'include',
                 headers: {
                   'Accept':'application/json','Content-Type': 'application/json'
@@ -328,7 +328,7 @@ function Record() {
         const id = trackEdi.findIndex((element)=>element.track_id === track_id);
 
         if(id !== undefined && trackEdi[id].title !== '' && trackEdi[id].artist !== ''){
-          fetch(api+'/track/edit',{
+          fetch('https://react-record-todo.herokuapp.com/track/edit',{
             method:'POST',mode:'cors',credentials: 'include',
             headers: {
               'Accept':'application/json','Content-Type': 'application/json'
@@ -353,7 +353,7 @@ function Record() {
       const handleTDel=(e,track_id)=>{
         const id = trackEdi.findIndex((element)=>element.track_id === track_id);
         if(id !== undefined){
-          fetch(api+'/track/delete',{
+          fetch('https://react-record-todo.herokuapp.com/track/delete',{
             method:'POST',mode:'cors',credentials: 'include',
             headers: {
               'Accept':'application/json','Content-Type': 'application/json'
@@ -374,7 +374,7 @@ function Record() {
 
     useEffect(() => {
       
-      fetch(api+'/record')
+      fetch('https://react-record-todo.herokuapp.com/record')
       .then((res) => res.json())
       .then((data) => {
         

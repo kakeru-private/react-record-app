@@ -13,7 +13,7 @@ function Delete() {
     const name = formValues.username;
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
-    fetch(api+'/users/delete',{
+    fetch('https://react-record-todo.herokuapp.com/users/delete',{
       method:'POST',mode:'cors',credentials: 'include',
       headers:{'Accept':'application/json','Content-Type': 'application/json'},
       body: JSON.stringify(
@@ -62,7 +62,7 @@ function Delete() {
     const name = formValues.username;
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
-    fetch(api+'/users',{
+    fetch('https://react-record-todo.herokuapp.com/users',{
       method:'POST',mode:'cors',credentials: 'include',
       headers:{'Accept':'application/json','Content-Type': 'application/json'},
       body: JSON.stringify(

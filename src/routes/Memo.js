@@ -50,7 +50,7 @@ function Memo() {
       const id = search.findIndex((element)=>element.memo_id === memo_id);
       console.log(search[id].memo);
       if(id !== undefined &&  search[id].memo !== ''){
-        fetch(api+'/memo/edit',{
+        fetch('https://react-record-todo.herokuapp.com/memo/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -77,7 +77,7 @@ function Memo() {
       const id = search.findIndex((element)=>element.memo_id === memo_id);
 
       if(id !== undefined){
-        fetch(api+'/memo/delete',{
+        fetch('https://react-record-todo.herokuapp.com/memo/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -109,7 +109,7 @@ function Memo() {
     const handleAdd =() =>{
       if(add !== ''){
         
-        fetch(api+'/memo/add',{
+        fetch('https://react-record-todo.herokuapp.com/memo/add',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -131,7 +131,7 @@ function Memo() {
 
     useEffect(() => {
       
-      fetch(api+'/memo')
+      fetch('https://react-record-todo.herokuapp.com/memo')
       .then((res) => res.json())
       .then((data) => {
         return (

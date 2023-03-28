@@ -51,7 +51,7 @@ function Home() {
 
   useEffect(() => {
       
-    fetch(api+'/')
+    fetch('https://react-record-todo.herokuapp.com/')
     .then((res) => res.json())
     .then((data) => {
       return (

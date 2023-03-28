@@ -71,7 +71,7 @@ function Track() {
       const id = search.findIndex((element)=>element.track_id === track_id);
       
       if(id !== undefined &&  search[id].title !== '' &&  search[id].artist !== ''){
-        fetch(api+'/track/edit',{
+        fetch('https://react-record-todo.herokuapp.com/track/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -99,7 +99,7 @@ function Track() {
       const id = search.findIndex((element)=>element.track_id === track_id);
 
       if(id !== undefined){
-        fetch(api+'/track/delete',{
+        fetch('https://react-record-todo.herokuapp.com/track/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -127,7 +127,7 @@ function Track() {
       const id = rid.indexOf((element)=>element.record_id === formValues.fk_rid);
       if(formValues.title !== '' && formValues.artist !== '' && id !== undefined){
         
-        fetch(api+'/track/add',{
+        fetch('https://react-record-todo.herokuapp.com/track/add',{
           method:'POST',mode:'cors',credentials: 'include',
           headers:{'Accept':'application/json','Content-Type': 'application/json'},
           body: JSON.stringify(
@@ -156,7 +156,7 @@ function Track() {
 
     useEffect(() => {
       
-      fetch(api+'/track')
+      fetch('https://react-record-todo.herokuapp.com/track')
       .then((res) => res.json())
       .then((data) => {
         
