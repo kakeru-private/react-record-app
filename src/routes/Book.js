@@ -5,6 +5,7 @@ import Delete from '@mui/icons-material/DeleteForever';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import AncLink from '../components/AncLink';
+import {uidContext} from '../App'
 
 
 
@@ -18,7 +19,7 @@ function Book() {
   const [value, setValue] = useState(init);
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState(init);
-
+    const {uid} = useContext(uidContext);
 
     const Dref = useRef();
     const Sref = useRef();

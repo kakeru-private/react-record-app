@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './css/Table.css'
 import SearchIcon from '@mui/icons-material/Search';
 import Delete from '@mui/icons-material/DeleteForever';
@@ -6,7 +6,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import AncLink from '../components/AncLink';
-
+import {uidContext} from '../App'
 
 
 function Record() {
@@ -23,7 +23,7 @@ function Record() {
     const [search, setSearch] = useState(rInit);
     const [track,setTrack] = useState(tInit);
     const [trackEdi, setTrackEdi] = useState(tInit);
-    
+    const {uid} = useContext(uidContext);
     
   
     
@@ -71,7 +71,7 @@ function Record() {
       
       const id = search.findIndex((element)=>element.record_id === record_id);
       console.log(search[id].record);
-      if(id !== undefined &&  search[id].title !== '' &&  search[id].artist !== ''){
+      if(id !== undefined &&  search[id].title !== '' &&  search[id].artist !== '' && uid !== undefined){
         var release_date = search[id].release_date;
         if(release_date === ''){
           release_date = value[id].release_date;
@@ -92,7 +92,8 @@ function Record() {
               'artist':`${search[id].artist}`,
               'record_num':`${search[id].record_num}`,
               'numOfTrack':`${search[id].numOfTrack}`,
-              'site':`${search[id].site}`
+              'site':`${search[id].site}`,
+              'uid':`${uid}`,
             },
           )
           
@@ -110,14 +111,17 @@ function Record() {
       console.log(record_id);
       const id = search.findIndex((element)=>element.record_id === record_id);
 
-      if(id !== undefined){
+      if(id !== undefined && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/record/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
-            {'record_id':`${record_id}`,},
+            {
+              'record_id':`${record_id}`,
+              'uid':`${uid}`,
+            },
           )
           
         })
@@ -209,7 +213,7 @@ function Record() {
     const handleSubmit= (e) =>{
       
       console.log('submit');
-      if(formValues.record !== ''){
+      if(formValues.record !== '' && uid !== undefined){
         
         const title = formValues.title;
         var release_date = formValues.release_date;
@@ -231,6 +235,7 @@ function Record() {
               'record_num':`${record_num}`,
               'numOfTrack':`${numOfTrack}`,
               'site':`${site}`,
+              'uid':`${uid}`,
             },
             
             )
@@ -279,7 +284,7 @@ function Record() {
 
       const handleTrackAdd=(e,index)=>{
       
-            if(trackForm[index].title !== '' && trackForm[index].artist !== ''){
+            if(trackForm[index].title !== '' && trackForm[index].artist !== '' && uid !== undefined){
               fetch('https://react-record-todo.herokuapp.com/track/add',{
                 method:'POST',mode:'cors',credentials: 'include',
                 headers: {
@@ -290,6 +295,7 @@ function Record() {
                     'title':`${trackForm[index].title}`,
                     'artist':`${trackForm[index].artist}`,
                     'fk_rid':`${trackForm[index].fk_rid}`,
+                    'uid':`${uid}`,
                   },
                 )
                 
@@ -330,7 +336,7 @@ function Record() {
       const handleTEdi=(e,track_id)=>{
         const id = trackEdi.findIndex((element)=>element.track_id === track_id);
 
-        if(id !== undefined && trackEdi[id].title !== '' && trackEdi[id].artist !== ''){
+        if(id !== undefined && trackEdi[id].title !== '' && trackEdi[id].artist !== '' && uid !== undefined){
           fetch('https://react-record-todo.herokuapp.com/track/edit',{
             method:'POST',mode:'cors',credentials: 'include',
             headers: {
@@ -342,6 +348,7 @@ function Record() {
                 'title':`${trackEdi[id].title}`,
                 'artist':`${trackEdi[id].artist}`,
                 'fk_rid':`${trackEdi[id].fk_rid}`,
+                'uid':`${uid}`,
               },
             )
             
@@ -355,7 +362,7 @@ function Record() {
 
       const handleTDel=(e,track_id)=>{
         const id = trackEdi.findIndex((element)=>element.track_id === track_id);
-        if(id !== undefined){
+        if(id !== undefined && uid !== undefined){
           fetch('https://react-record-todo.herokuapp.com/track/delete',{
             method:'POST',mode:'cors',credentials: 'include',
             headers: {
@@ -364,6 +371,7 @@ function Record() {
             body:JSON.stringify(
               {
                 'track_id':`${trackEdi[id].track_id}`,
+                'uid':`${uid}`,
               },
             )
             
@@ -376,36 +384,53 @@ function Record() {
       }
 
     useEffect(() => {
+      uid === undefined ?
+      (
+        setValue(rInit) ,
+        setSearch(rInit),
+        setTrack(tInit) ,
+        setTrackEdi(tInit),
+        setTrackForm(tfInit),
+        word.current.value=''
+      )
+      :
+      (
+        fetch('https://react-record-todo.herokuapp.com/record',{
+          method:'GET',mode:'cors',credentials: 'include',
+          headers: {
+            'Accept':'application/json','Content-Type': 'application/json'
+          },
+          body:JSON.stringify(
+            {
+              'uid':`${uid}`,
+            },
+          )
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          
+          
+          return (
+            data.length > 0 ? 
+            (
+              setValue(data[0]) ,
+              setSearch(data[0]),
+              setTrack(data[1]) ,
+              setTrackEdi(data[1]),
+              setTrackForm(data[2])
+            ) 
+            :
+             (
+              setValue(rInit) ,
+              setSearch(rInit),
+              setTrack(tInit) ,
+              setTrackEdi(tInit),
+              setTrackForm(tfInit)
+            ),
+            word.current.value=''
+          )})
+      )
       
-      fetch('https://react-record-todo.herokuapp.com/record',{
-        method:'GET',mode:'cors',credentials: 'include',
-        headers: {
-          'Accept':'application/json','Content-Type': 'application/json'
-        },
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        
-        
-        return (
-          data.length > 0 ? 
-          (
-            setValue(data[0]) ,
-            setSearch(data[0]),
-            setTrack(data[1]) ,
-            setTrackEdi(data[1]),
-            setTrackForm(data[2])
-          ) 
-          :
-           (
-            setValue(rInit) ,
-            setSearch(rInit),
-            setTrack(tInit) ,
-            setTrackEdi(tInit),
-            setTrackForm(tfInit)
-          ),
-          word.current.value=''
-        )});
           
     }, [ins])
 

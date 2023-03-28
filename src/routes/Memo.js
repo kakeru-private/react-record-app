@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './css/Table.css'
 import SearchIcon from '@mui/icons-material/Search';
 import Delete from '@mui/icons-material/DeleteForever';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import AncLink from '../components/AncLink';
+import {uidContext} from '../App'
 
 function Memo() {
   const init = [{memo:'',update_date:'',memo_id:'',fk_uid:''}];
@@ -12,8 +13,7 @@ function Memo() {
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState(init);
     const [add, setAdd] = useState('');
-    const [rend,setRend] = useState(false);
-    
+    const {uid} = useContext(uidContext);
     const Dref = useRef();
     const Sref = useRef();
     const word = useRef();
@@ -51,7 +51,7 @@ function Memo() {
       console.log(memo_id);
       const id = search.findIndex((element)=>element.memo_id === memo_id);
       console.log(search[id].memo);
-      if(id !== undefined &&  search[id].memo !== ''){
+      if(id !== undefined &&  search[id].memo !== '' && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/memo/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
@@ -61,6 +61,7 @@ function Memo() {
             {
               'memo_id':`${memo_id}`,
               'memo':`${search[id].memo}`,
+              'uid':`${uid}`,
             },
           )
           
@@ -78,14 +79,17 @@ function Memo() {
       console.log(memo_id);
       const id = search.findIndex((element)=>element.memo_id === memo_id);
 
-      if(id !== undefined){
+      if(id !== undefined && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/memo/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
-            {'memo_id':`${memo_id}`,},
+            {
+              'memo_id':`${memo_id}`,
+              'uid':`${uid}`,
+            },
           )
           
         })
@@ -109,7 +113,7 @@ function Memo() {
     }
 
     const handleAdd =() =>{
-      if(add !== ''){
+      if(add !== '' && uid !== undefined){
         
         fetch('https://react-record-todo.herokuapp.com/memo/add',{
           method:'POST',mode:'cors',credentials: 'include',
@@ -117,7 +121,10 @@ function Memo() {
             'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
-            {'memo':`${add}`}
+            {
+              'memo':`${add}`,
+              'uid':`${uid}`,
+            }
           )
           
         })
@@ -132,12 +139,21 @@ function Memo() {
     }
 
     useEffect(() => {
-      
+      uid === undefined ? (
+        setValue(init) ,
+        setSearch(init)
+      ):
+      (
       fetch('https://react-record-todo.herokuapp.com/memo',{
-        method:'GET',mode:'cors',credentials: 'include',
+        method:'POST',mode:'cors',credentials: 'include',
         headers: {
           'Accept':'application/json','Content-Type': 'application/json'
         },
+        body:JSON.stringify(
+          {
+            'uid':`${uid}`,
+          },
+        )
       })
       .then((res) => res.json())
       .then((data) => {
@@ -145,8 +161,7 @@ function Memo() {
           data.length > 0 ?
           (
             setValue(data) ,
-            setSearch(data),
-            setRend(true)
+            setSearch(data)
           )
           :
           (
@@ -155,7 +170,8 @@ function Memo() {
           ) 
 
           
-        )});
+        )})
+      )
       
     }, [ins])
 
@@ -227,7 +243,7 @@ function Memo() {
                     </tbody>
 
                     
-                      {search.map(({memo,update_date,memo_id})=> (
+                      {uid === undefined ? '' : search.map(({memo,update_date,memo_id})=> (
                       <tbody>
                         <tr key={memo_id}>
                           <td>

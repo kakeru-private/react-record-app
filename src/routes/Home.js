@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import SearchIcon from '@mui/icons-material/Search';
+import {uidContext} from '../App'
 
 function Home() {
   const tInit = [{todo:'',deadline:'',todo_id:'',remarks:''}];
@@ -9,7 +10,7 @@ function Home() {
   const [memoValue, setMemoValue] = useState(mInit);
   const [todoSearchValue, setTodoSearchValue] = useState(tInit);
   const [memoSearchValue, setMemoSearchValue] = useState(mInit);
-  
+  const {uid} = useContext(uidContext);
 
   const TDref = useRef();
   const TSref = useRef();
@@ -52,12 +53,26 @@ function Home() {
 
 
   useEffect(() => {
-      
+    uid === undefined ? 
+    (
+      setMemoValue(mInit),
+      setTodoValue(tInit),
+      setMemoSearchValue(mInit),
+      setTodoSearchValue(tInit),
+      word.current.value=''
+    )
+    :
+    (
     fetch('https://react-record-todo.herokuapp.com',{
-      method:'GET',mode:'cors',credentials: 'include',
+      method:'POST',mode:'cors',credentials: 'include',
       headers: {
         'Accept':'application/json','Content-Type': 'application/json'
       },
+      body:JSON.stringify(
+        {
+          'uid':`${uid}`,
+        },
+      )
     })
     .then((res) => res.json())
     .then((data) => {
@@ -78,8 +93,8 @@ function Home() {
         ),
         
         word.current.value=''
-      )});
-    
+      )})
+      )
   }, [])
     return(
       <div className='top'>
@@ -145,7 +160,7 @@ function Home() {
                     </tbody>
 
                     <tbody>
-                      {memoSearchValue.map(({memo,update_date,memo_id})=> (
+                      {uid === undefined ? '': memoSearchValue.map(({memo,update_date,memo_id})=> (
                       
                         <tr key={memo_id}>
                           <td>

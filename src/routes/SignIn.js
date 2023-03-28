@@ -1,6 +1,7 @@
 import './css/SignUp.css'
-import React, {  useState } from 'react';
+import React, {  useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {uidContext} from '../App'
 
 
 function SignIn() {
@@ -9,7 +10,8 @@ function SignIn() {
   const [formErrors,setFormErrors] = useState({});
   const [isSubmit,setIsSubmit] = useState(false);
   const navigate = useNavigate();
-  
+  const {setUid} = useContext(uidContext);
+    
 
   const handleChange = (e) =>{
     //console.log(e.target.name);
@@ -48,7 +50,7 @@ function SignIn() {
     .then((data) => {
       return(
 
-        data.message !==  'success' ? setFormErrors({...formErrors,password:'usernameまたはpasswordが間違っています'}) : (setFormValues(initialValues),navigate('/'))
+        data.message !==  'success' ? setFormErrors({...formErrors,password:'usernameまたはpasswordが間違っています'}) : (setFormValues(initialValues),setUid(data.uid),navigate('/'))
         
       )
     })

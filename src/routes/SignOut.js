@@ -1,31 +1,24 @@
 import './css/SignUp.css'
-import React, { useState } from 'react';
-
+import React, { useContext, useState } from 'react';
+import {uidContext} from '../App'
 
 function SignOut() {
   const [sucMsg,setSucMsg] = useState('');
   const [misMsg,setMisMsg] = useState('');
-  
+  const {uid,setUid} = useContext(uidContext);
   const handleSubmit= (e) =>{
     e.preventDefault();
-    fetch('https://react-record-todo.herokuapp.com/users/signout',{
-        method:'POST',mode:'cors',credentials: 'include',
-        headers:{'Content-Type': 'text/plain'},
-        
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        return(
-          data.message !==  'success' ? 
-          setMisMsg('サインインしていません')
-           : 
-          setSucMsg('サインアウトしました'),
-          console.log(data),
-          setTimeout(()=>{
-            window.location.reload('/users')
-          },1*500)
-        )
-      })
+    
+      uid ===  undefined ? 
+      setMisMsg('サインインしていません')
+        : 
+      setSucMsg('サインアウトしました'),
+      console.log(data),
+      setUid(undefined),
+      setTimeout(()=>{
+        window.location.reload('/users')
+      },1*500)
+     
     
   };
 

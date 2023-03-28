@@ -5,7 +5,7 @@ import Delete from '@mui/icons-material/DeleteForever';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import AncLink from '../components/AncLink';
-
+import {uidContext} from '../App'
 
 function Track() {
   const init = [{title:'',track_id:'',tTitle:'',artist:'',fk_rid:''}];
@@ -16,7 +16,7 @@ function Track() {
     const [rid,setRid] = useState(rInit);
     const initialValues = {title:'',fk_rid:0,artist:''};
     const [formValues,setFormValues] = useState(initialValues);
-  
+    const {uid} = useContext(uidContext);
     const Dref = useRef();
     const Sref = useRef();
     const word = useRef();
@@ -72,7 +72,7 @@ function Track() {
       
       const id = search.findIndex((element)=>element.track_id === track_id);
       
-      if(id !== undefined &&  search[id].title !== '' &&  search[id].artist !== ''){
+      if(id !== undefined &&  search[id].title !== '' &&  search[id].artist !== '' && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/track/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
@@ -84,6 +84,7 @@ function Track() {
                 'title':`${search[id].title}`,
                 'artist':`${search[id].artist}`,
                 'fk_rid':`${search[id].fk_rid}`,
+                'uid':`${uid}`,
             },
           )
           
@@ -100,14 +101,17 @@ function Track() {
     const handleDel = (e,track_id) =>{
       const id = search.findIndex((element)=>element.track_id === track_id);
 
-      if(id !== undefined){
+      if(id !== undefined && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/track/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
-            {'track_id':`${track_id}`,},
+            {
+              'track_id':`${track_id}`,
+              'uid':`${uid}`,
+            },
           )
           
         })
@@ -127,7 +131,7 @@ function Track() {
   
     const handleTrackAdd=(e)=>{
       const id = rid.indexOf((element)=>element.record_id === formValues.fk_rid);
-      if(formValues.title !== '' && formValues.artist !== '' && id !== undefined){
+      if(formValues.title !== '' && formValues.artist !== '' && id !== undefined && uid !== undefined){
         
         fetch('https://react-record-todo.herokuapp.com/track/add',{
           method:'POST',mode:'cors',credentials: 'include',
@@ -136,7 +140,8 @@ function Track() {
             {
               'title':`${formValues.title}`,
               'artist':`${formValues.artist}`,
-              'fk_rid':`${formValues.fk_rid}`
+              'fk_rid':`${formValues.fk_rid}`,
+              'uid':`${uid}`,
             },
             
             )
@@ -157,33 +162,49 @@ function Track() {
     }
 
     useEffect(() => {
-      
-      fetch('https://react-record-todo.herokuapp.com/track',{
-        method:'GET',mode:'cors',credentials: 'include',
-        headers: {
-          'Accept':'application/json','Content-Type': 'application/json'
-        },
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        
-        
-        return (
-          data.length > 0 ?
-          (
-            setValue(data[0]) ,
-            setSearch(data[0]),
-            setRid(data[1])
-          )
-          :
-          (
-            setValue(init) ,
-            setSearch(init),
-            setRid(rInit)
-          ),
+      uid === undefined ? 
+      (
+        setValue(init) ,
+        setSearch(init),
+        setRid(rInit),
+        word.current.value=''
+      )
+      :
+      (
+        fetch('https://react-record-todo.herokuapp.com/track',{
+          method:'POST',mode:'cors',credentials: 'include',
+          headers: {
+            'Accept':'application/json','Content-Type': 'application/json'
+          },
+          body: JSON.stringify(
+            {
+              'uid':`${uid}`,
+            },
+            
+            )
+        })
+        .then((res) => res.json())
+        .then((data) => {
           
-          word.current.value=''
-        )});
+          
+          return (
+            data.length > 0 ?
+            (
+              setValue(data[0]) ,
+              setSearch(data[0]),
+              setRid(data[1])
+            )
+            :
+            (
+              setValue(init) ,
+              setSearch(init),
+              setRid(rInit)
+            ),
+            
+            word.current.value=''
+          )})
+      )
+      
           
     }, [ins])
 

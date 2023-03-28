@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './css/Table.css'
 import SearchIcon from '@mui/icons-material/Search';
 import Delete from '@mui/icons-material/DeleteForever';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import AncLink from '../components/AncLink';
+import {uidContext} from '../App'
 
 function Todo() {
     const date = new Date();
@@ -15,10 +16,8 @@ function Todo() {
     const [value, setValue] = useState(init);
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState(init);
-    
+    const {uid} = useContext(uidContext);
 
-    
-  
     
     const Dref = useRef();
     const Sref = useRef();
@@ -48,7 +47,7 @@ function Todo() {
       console.log(todo_id);
       const id = search.findIndex((element)=>element.todo_id === todo_id);
       console.log(search[id].todo);
-      if(id !== undefined &&  search[id].todo !== ''){
+      if(id !== undefined &&  search[id].todo !== '' && uid !== undefined){
         var deadline = search[id].deadline;
         if(deadline === ''){
           deadline = value[id].deadline;
@@ -66,7 +65,8 @@ function Todo() {
               'todo_id':`${todo_id}`,
               'todo':`${search[id].todo}`,
               'deadline':`${deadline}`,
-              'remarks':`${search[id].remarks}`
+              'remarks':`${search[id].remarks}`,
+              'uid':`${uid}`,
             },
           )
           
@@ -84,14 +84,17 @@ function Todo() {
       console.log(todo_id);
       const id = search.findIndex((element)=>element.todo_id === todo_id);
 
-      if(id !== undefined){
+      if(id !== undefined && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/todo/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
-            {'todo_id':`${todo_id}`,},
+            {
+              'todo_id':`${todo_id}`,
+              'uid':`${uid}`,
+            },
           )
           
         })
@@ -139,7 +142,7 @@ function Todo() {
     const handleSubmit= (e) =>{
       
       console.log('submit');
-      if(formValues.todo !== ''){
+      if(formValues.todo !== '' && uid !== undefined){
         
         const todo = formValues.todo;
         var deadline = formValues.deadline;
@@ -154,7 +157,8 @@ function Todo() {
             {
               'todo':`${todo}`,
               'deadline':`${deadline}`,
-              'remarks':`${remarks}`
+              'remarks':`${remarks}`,
+              'uid':`${uid}`,
             },
             
             )
@@ -170,34 +174,45 @@ function Todo() {
       
     };
   
-
-   
-    
-
     useEffect(() => {
+      uid === undefined ? 
+      (
+        setValue(init) ,
+        setSearch(init),
+        word.current.value=''
+      )
+      :
+      (
+        fetch('https://react-record-todo.herokuapp.com/todo',{
+          method:'POST',mode:'cors',credentials: 'include',
+          headers: {
+            'Accept':'application/json','Content-Type': 'application/json'
+          },
+          body: JSON.stringify(
+            {
+              'uid':`${uid}`,
+            },
+            
+            )
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          return (
+            data.length > 0 ?
+            (
+              setValue(data) ,
+              setSearch(data)
+            )
+            :
+            (
+              setValue(init) ,
+              setSearch(init)
+            ),
+            
+            word.current.value=''
+          )})
+      )
       
-      fetch('https://react-record-todo.herokuapp.com/todo',{
-        method:'GET',mode:'cors',credentials: 'include',
-        headers: {
-          'Accept':'application/json','Content-Type': 'application/json'
-        },
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        return (
-          data.length > 0 ?
-          (
-            setValue(data) ,
-            setSearch(data)
-          )
-          :
-          (
-            setValue(init) ,
-            setSearch(init)
-          ),
-          
-          word.current.value=''
-        )});
       
     }, [ins])
 
