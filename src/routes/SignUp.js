@@ -64,14 +64,14 @@ function SignUp() {
     fetch('https://react-record-todo.herokuapp.com/users/',{
       method:'POST',mode:'cors',credentials: 'include',
       headers:{'Content-Type': 'text/plain'},
-      body: JSON.stringify(
+      body: 
         {
           name:name,
           mail:mailaddress,
           password:password
         }
         
-        )
+        
         
     })
     .then((res) => res.json())
