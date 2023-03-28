@@ -227,7 +227,7 @@ function Memo() {
                     </tbody>
 
                     
-                      {rend ? search.map(({memo,update_date,memo_id})=> (
+                      {search.map(({memo,update_date,memo_id})=> (
                       <tbody>
                         <tr key={memo_id}>
                           <td>
@@ -251,7 +251,7 @@ function Memo() {
                         
                         </tr>
                         </tbody>
-                      )):''}
+                      ))}
                      
                         <br/><br/>
                         <tr id='add'>
