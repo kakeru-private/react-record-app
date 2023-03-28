@@ -376,6 +376,9 @@ function Record() {
       
       fetch('https://react-record-todo.herokuapp.com/record',{
         method:'GET',mode:'cors',credentials: 'include',
+        headers: {
+          'Accept':'application/json','Content-Type': 'application/json'
+        },
       })
       .then((res) => res.json())
       .then((data) => {
