@@ -14,7 +14,7 @@ function SignUp() {
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
     fetch(api+'/users/signup',{
-      method:'POST',
+      method:'POST',mode:'cors',
       headers:{'Content-Type': 'text/plain'},
       body: JSON.stringify(
         {
@@ -62,7 +62,7 @@ function SignUp() {
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
     fetch(api+'/users/',{
-      method:'POST',
+      method:'POST',mode:'cors',
       headers:{'Content-Type': 'text/plain'},
       body: JSON.stringify(
         {

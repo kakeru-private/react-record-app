@@ -51,7 +51,7 @@ function Memo() {
       console.log(search[id].memo);
       if(id !== undefined &&  search[id].memo !== ''){
         fetch(api+'/memo/edit',{
-          method:'post',
+          method:'POST',mode:'cors',
           headers: {
             'Content-Type': 'text/plain'
           },
@@ -78,7 +78,7 @@ function Memo() {
 
       if(id !== undefined){
         fetch(api+'/memo/delete',{
-          method:'post',
+          method:'POST',mode:'cors',
           headers: {
             'Content-Type': 'text/plain'
           },
@@ -110,7 +110,7 @@ function Memo() {
       if(add !== ''){
         
         fetch(api+'/memo/add',{
-          method:'post',
+          method:'POST',mode:'cors',
           headers: {
             'Content-Type': 'text/plain'
           },

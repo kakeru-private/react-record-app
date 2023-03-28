@@ -72,7 +72,7 @@ function Track() {
       
       if(id !== undefined &&  search[id].title !== '' &&  search[id].artist !== ''){
         fetch(api+'/track/edit',{
-          method:'post',
+          method:'POST',mode:'cors',
           headers: {
             'Content-Type': 'text/plain'
           },
@@ -100,7 +100,7 @@ function Track() {
 
       if(id !== undefined){
         fetch(api+'/track/delete',{
-          method:'post',
+          method:'POST',mode:'cors',
           headers: {
             'Content-Type': 'text/plain'
           },
@@ -128,7 +128,7 @@ function Track() {
       if(formValues.title !== '' && formValues.artist !== '' && id !== undefined){
         
         fetch(api+'/track/add',{
-          method:'POST',
+          method:'POST',mode:'cors',
           headers:{'Content-Type': 'text/plain'},
           body: JSON.stringify(
             {
