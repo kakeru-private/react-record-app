@@ -11,14 +11,17 @@ function SignOut() {
     e.preventDefault();
     
       uid ===  undefined ? 
-      setMisMsg('サインインしていません')
-        : 
-      setSucMsg('サインアウトしました'),
-    
-      setUid(undefined),
-      setTimeout(()=>{
-        window.location.reload('/users')
-      },1*500)
+      (
+        setMisMsg('サインインしていません')
+      )
+      : 
+      (
+        setSucMsg('サインアウトしました'),
+        setUid(undefined),
+        setTimeout(()=>{
+          window.location.reload('/users')
+        },1*500)
+      )
      
     
   };
