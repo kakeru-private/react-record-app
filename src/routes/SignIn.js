@@ -33,7 +33,7 @@ function SignIn() {
     const name = formValues.username;
     const password = formValues.password;
     fetch(api+'/users/signin',{
-      method:'POST',mode:'cors',
+      method:'POST',mode:'cors',credentials: 'include',
       headers:{'Content-Type': 'text/plain'},
       body: JSON.stringify(
         {

@@ -56,7 +56,7 @@ function Todo() {
           deadline = time;
         }
         fetch(api+'/todo/edit',{
-          method:'POST',mode:'cors',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Content-Type': 'text/plain'
           },
@@ -85,7 +85,7 @@ function Todo() {
 
       if(id !== undefined){
         fetch(api+'/todo/delete',{
-          method:'POST',mode:'cors',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Content-Type': 'text/plain'
           },
@@ -147,7 +147,7 @@ function Todo() {
           deadline = time;
         } 
         fetch(api+'/todo/add',{
-          method:'POST',mode:'cors',
+          method:'POST',mode:'cors',credentials: 'include',
           headers:{'Content-Type': 'text/plain'},
           body: JSON.stringify(
             {

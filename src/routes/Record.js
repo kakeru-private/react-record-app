@@ -77,7 +77,7 @@ function Record() {
           release_date = time;
         }
         fetch(api+'/record/edit',{
-          method:'POST',mode:'cors',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Content-Type': 'text/plain'
           },
@@ -109,7 +109,7 @@ function Record() {
 
       if(id !== undefined){
         fetch(api+'/record/delete',{
-          method:'POST',mode:'cors',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Content-Type': 'text/plain'
           },
@@ -218,7 +218,7 @@ function Record() {
           release_date = time;
         } 
         fetch(api+'/record/add',{
-          method:'POST',mode:'cors',
+          method:'POST',mode:'cors',credentials: 'include',
           headers:{'Content-Type': 'text/plain'},
           body: JSON.stringify(
             {
@@ -278,7 +278,7 @@ function Record() {
       
             if(trackForm[index].title !== '' && trackForm[index].artist !== ''){
               fetch(api+'/track/add',{
-                method:'POST',mode:'cors',
+                method:'POST',mode:'cors',credentials: 'include',
                 headers: {
                   'Content-Type': 'text/plain'
                 },
@@ -329,7 +329,7 @@ function Record() {
 
         if(id !== undefined && trackEdi[id].title !== '' && trackEdi[id].artist !== ''){
           fetch(api+'/track/edit',{
-            method:'POST',mode:'cors',
+            method:'POST',mode:'cors',credentials: 'include',
             headers: {
               'Content-Type': 'text/plain'
             },
@@ -354,7 +354,7 @@ function Record() {
         const id = trackEdi.findIndex((element)=>element.track_id === track_id);
         if(id !== undefined){
           fetch(api+'/track/delete',{
-            method:'POST',mode:'cors',
+            method:'POST',mode:'cors',credentials: 'include',
             headers: {
               'Content-Type': 'text/plain'
             },

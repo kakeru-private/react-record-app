@@ -50,7 +50,7 @@ function Book() {
       console.log(search[id].title);
       if(id !== undefined && search[id].title !== ''){
         fetch(api+'/book/edit',{
-          method:'POST',mode:'cors',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Content-Type': 'text/plain'
           },
@@ -82,7 +82,7 @@ function Book() {
 
       if(id !== undefined){
         fetch(api+'/book/delete',{
-          method:'POST',mode:'cors',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Content-Type': 'text/plain'
           },
@@ -187,7 +187,7 @@ function Book() {
           release_date = time;
         } 
         fetch(api+'/book/add',{
-          method:'POST',mode:'cors',
+          method:'POST',mode:'cors',credentials: 'include',
           headers:{'Content-Type': 'text/plain'},
           body: JSON.stringify(
             {

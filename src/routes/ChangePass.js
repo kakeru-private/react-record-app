@@ -32,7 +32,7 @@ function ChangePass() {
     const mail = formValues.mailaddress;
     const password = formValues.password;
     fetch(api+'/users/changepass',{
-      method:'POST',mode:'cors',
+      method:'POST',mode:'cors',credentials: 'include',
       headers:{'Content-Type': 'text/plain'},
       body: JSON.stringify(
         {
