@@ -6,6 +6,7 @@ function SignOut() {
   const [sucMsg,setSucMsg] = useState('');
   const [misMsg,setMisMsg] = useState('');
   const {uid,setUid} = useContext(uidContext);
+
   const handleSubmit= (e) =>{
     e.preventDefault();
     
@@ -13,7 +14,7 @@ function SignOut() {
       setMisMsg('サインインしていません')
         : 
       setSucMsg('サインアウトしました'),
-      console.log(data),
+    
       setUid(undefined),
       setTimeout(()=>{
         window.location.reload('/users')
