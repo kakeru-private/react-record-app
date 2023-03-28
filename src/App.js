@@ -3,11 +3,11 @@ import './App.css'
 import Sidebar from './components/Sidebar';
 import Router from './Router';
 
-
+export const uidContext = createContext();
 
 
 function App() {
-  const uidContext = createContext();
+  
   const [uid,setUid] = useState(undefined);
   const value = {
     uid,
