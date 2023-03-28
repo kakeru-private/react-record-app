@@ -384,18 +384,7 @@ function Record() {
       }
 
     useEffect(() => {
-      uid === undefined ?
-      (
-        setValue(rInit) ,
-        setSearch(rInit),
-        setTrack(tInit) ,
-        setTrackEdi(tInit),
-        setTrackForm(tfInit),
-        word.current.value=''
-      )
-      :
-      (
-        fetch('https://react-record-todo.herokuapp.com/record',{
+      fetch('https://react-record-todo.herokuapp.com/record',{
           method:'GET',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -429,7 +418,7 @@ function Record() {
             ),
             word.current.value=''
           )})
-      )
+      
       
           
     }, [ins])

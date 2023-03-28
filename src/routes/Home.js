@@ -53,16 +53,6 @@ function Home() {
 
 
   useEffect(() => {
-    uid === undefined ? 
-    (
-      setMemoValue(mInit),
-      setTodoValue(tInit),
-      setMemoSearchValue(mInit),
-      setTodoSearchValue(tInit),
-      word.current.value=''
-    )
-    :
-    (
     fetch('https://react-record-todo.herokuapp.com',{
       method:'POST',mode:'cors',credentials: 'include',
       headers: {
@@ -94,7 +84,7 @@ function Home() {
         
         word.current.value=''
       )})
-      )
+      
   }, [])
     return(
       <div className='top'>

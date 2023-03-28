@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './css/Table.css'
 import SearchIcon from '@mui/icons-material/Search';
 import Delete from '@mui/icons-material/DeleteForever';
@@ -162,16 +162,7 @@ function Track() {
     }
 
     useEffect(() => {
-      uid === undefined ? 
-      (
-        setValue(init) ,
-        setSearch(init),
-        setRid(rInit),
-        word.current.value=''
-      )
-      :
-      (
-        fetch('https://react-record-todo.herokuapp.com/track',{
+      fetch('https://react-record-todo.herokuapp.com/track',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -203,7 +194,7 @@ function Track() {
             
             word.current.value=''
           )})
-      )
+      
       
           
     }, [ins])

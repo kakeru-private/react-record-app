@@ -175,15 +175,7 @@ function Todo() {
     };
   
     useEffect(() => {
-      uid === undefined ? 
-      (
-        setValue(init) ,
-        setSearch(init),
-        word.current.value=''
-      )
-      :
-      (
-        fetch('https://react-record-todo.herokuapp.com/todo',{
+      fetch('https://react-record-todo.herokuapp.com/todo',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
@@ -211,7 +203,7 @@ function Todo() {
             
             word.current.value=''
           )})
-      )
+      
       
       
     }, [ins])

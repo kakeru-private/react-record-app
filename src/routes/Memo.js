@@ -139,11 +139,6 @@ function Memo() {
     }
 
     useEffect(() => {
-      uid === undefined ? (
-        setValue(init) ,
-        setSearch(init)
-      ):
-      (
       fetch('https://react-record-todo.herokuapp.com/memo',{
         method:'POST',mode:'cors',credentials: 'include',
         headers: {
@@ -171,7 +166,6 @@ function Memo() {
 
           
         )})
-      )
       
     }, [ins])
 

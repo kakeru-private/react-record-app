@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './css/Table.css'
 import SearchIcon from '@mui/icons-material/Search';
 import Delete from '@mui/icons-material/DeleteForever';
@@ -50,7 +50,7 @@ function Book() {
       console.log(book_id);
       const id = search.findIndex((element)=>element.book_id === book_id);
       console.log(search[id].title);
-      if(id !== undefined && search[id].title !== ''){
+      if(id !== undefined && search[id].title !== '' && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/book/edit',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
@@ -65,6 +65,7 @@ function Book() {
               'author':`${search[id].author}`,
               'publisher':`${search[id].publisher}`,
               'site':`${search[id].site}`,
+              'uid':`${uid}`,
             },
           )
           
@@ -82,14 +83,17 @@ function Book() {
       console.log(book_id);
       const id = search.findIndex((element)=>element.book_id === book_id);
 
-      if(id !== undefined){
+      if(id !== undefined && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/book/delete',{
           method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
           body:JSON.stringify(
-            {'book_id':`${book_id}`,},
+            {
+              'book_id':`${book_id}`,
+              'uid':`${uid}`,
+            },
           )
           
         })
@@ -177,7 +181,7 @@ function Book() {
     const handleSubmit= (e) =>{
       
       console.log('submit');
-      if(formValues.title !== '' && formValues.author !== ''){
+      if(formValues.title !== '' && formValues.author !== '' && uid !== undefined){
         
         const title = formValues.title;
         const isbn = formValues.isbn;
@@ -199,6 +203,7 @@ function Book() {
               'author':`${author}`,
               'publisher':`${publisher}`,
               'site':`${site}`,
+              'uid':`${uid}`,
             },
             
             )
@@ -221,10 +226,15 @@ function Book() {
     useEffect(() => {
       
       fetch('https://react-record-todo.herokuapp.com/book',{
-        method:'GET',mode:'cors',credentials: 'include',
+        method:'POST',mode:'cors',credentials: 'include',
         headers: {
           'Accept':'application/json','Content-Type': 'application/json'
         },
+        body:JSON.stringify(
+          {
+            'uid':`${uid}`,
+          },
+        )
       })
       .then((res) => res.json())
       .then((data) => {
