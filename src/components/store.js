@@ -18,8 +18,3 @@ export const store = createSlice({
     }
 });
 
-
-export const {signin} = store.actions;
-export const {signout} = store.actions;
-
-export default store.reducer;
