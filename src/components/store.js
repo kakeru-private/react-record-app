@@ -3,8 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 export const store = createSlice({
     name:'user',
     initialState:{
-        uid:undefined,
-        username:undefined           
+                
     },
     reducers:{
         signin(state,action) {
