@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './css/Table.css'
 import SearchIcon from '@mui/icons-material/Search';
 import Delete from '@mui/icons-material/DeleteForever';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import AncLink from '../components/AncLink';
-import {uidContext} from '../App'
+import { useSelector } from "react-redux";
 
 function Memo() {
   const init = [{memo:'',update_date:'',memo_id:'',fk_uid:''}];
@@ -13,7 +13,8 @@ function Memo() {
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState(init);
     const [add, setAdd] = useState('');
-    const {uid} = useContext(uidContext);
+    const uid = useSelector((state) => state.uid);
+
     const Dref = useRef();
     const Sref = useRef();
     const word = useRef();

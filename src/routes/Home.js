@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import SearchIcon from '@mui/icons-material/Search';
-import {uidContext} from '../App'
+import { useSelector } from "react-redux";
 
 function Home() {
   const tInit = [{todo:'',deadline:'',todo_id:'',remarks:''}];
@@ -10,7 +10,7 @@ function Home() {
   const [memoValue, setMemoValue] = useState(mInit);
   const [todoSearchValue, setTodoSearchValue] = useState(tInit);
   const [memoSearchValue, setMemoSearchValue] = useState(mInit);
-  const {uid} = useContext(uidContext);
+  const uid = useSelector((state) => state.uid);
 
   const TDref = useRef();
   const TSref = useRef();

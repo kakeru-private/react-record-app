@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './css/Table.css'
 import SearchIcon from '@mui/icons-material/Search';
 import Delete from '@mui/icons-material/DeleteForever';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import AncLink from '../components/AncLink';
-import {uidContext} from '../App'
+import { useSelector } from "react-redux";
 
 function Todo() {
     const date = new Date();
@@ -16,7 +16,7 @@ function Todo() {
     const [value, setValue] = useState(init);
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState(init);
-    const {uid} = useContext(uidContext);
+    const uid = useSelector((state) => state.uid);
 
     
     const Dref = useRef();

@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './css/Table.css'
 import SearchIcon from '@mui/icons-material/Search';
 import Delete from '@mui/icons-material/DeleteForever';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import AncLink from '../components/AncLink';
-import {uidContext} from '../App'
+import { useSelector } from "react-redux";
 
 function Track() {
   const init = [{title:'',track_id:'',tTitle:'',artist:'',fk_rid:''}];
@@ -16,7 +16,8 @@ function Track() {
     const [rid,setRid] = useState(rInit);
     const initialValues = {title:'',fk_rid:0,artist:''};
     const [formValues,setFormValues] = useState(initialValues);
-    const {uid} = useContext(uidContext);
+    const uid = useSelector((state) => state.uid);
+
     const Dref = useRef();
     const Sref = useRef();
     const word = useRef();

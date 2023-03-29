@@ -1,7 +1,7 @@
 import './css/SignUp.css'
-import React, {  useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {uidContext} from '../App'
+import { useDispatch } from 'react-redux';
 
 
 function SignIn() {
@@ -10,7 +10,10 @@ function SignIn() {
   const [formErrors,setFormErrors] = useState({});
   const [isSubmit,setIsSubmit] = useState(false);
   const navigate = useNavigate();
-  const {setUid} = useContext(uidContext);
+  const dispatch = useDispatch();
+  const setUid = (uid,username) => {
+    dispatch({type:'signin',payload:{uid:uid,username:username}});
+  }
     
 
   const handleChange = (e) =>{
@@ -50,7 +53,15 @@ function SignIn() {
     .then((data) => {
       return(
 
-        data.message !==  'success' ? setFormErrors({...formErrors,password:'usernameまたはpasswordが間違っています'}) : (setFormValues(initialValues),setUid(data.uid),navigate('/'))
+        data.message !==  'success' ?
+         setFormErrors({...formErrors,password:'usernameまたはpasswordが間違っています'})
+         : 
+        (
+          setFormValues(initialValues),
+          navigate('/'),
+          setUid(data.uid,data.username)
+
+        )
         
       )
     })
