@@ -1,4 +1,4 @@
-import createStore from 'redux';
+import {createStore} from 'redux';
 
 const initState = {
     uid:undefined,
@@ -16,7 +16,7 @@ const reducer = (state = initState,action) =>{
             state.username=undefined
             
         default:
-            return state;
+            state;
     }
     
 };
