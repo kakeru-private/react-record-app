@@ -3,7 +3,8 @@ import {createSlice} from '@reduxjs/toolkit';
 export const store = createSlice({
     name:'user',
     initialState:{
-                
+        uid:null,
+        username:null           
     },
     reducers:{
         signin(state,action) {
@@ -14,8 +15,8 @@ export const store = createSlice({
         },
         signout(state){
             state.push({
-                uid:undefined,
-                username:undefined
+                uid:null,
+                username:null
             })
         }
     }
