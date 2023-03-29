@@ -8,12 +8,16 @@ const store = createSlice({
     },
     reducers:{
         signin(state,action) {
-            state.uid = action.payload.uid,
-            state.username = action.payload.username
+            state.push({
+                uid:action.payload.uid,
+                username:action.payload.username
+            })
         },
         signout(state){
-            state.uid=undefined,
-            state.username=undefined
+            state.push({
+                uid:undefined,
+                username:undefined
+            })
         }
     }
 });
