@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-export const store = createSlice({
+const store = createSlice({
     name:'user',
     initState:{
         uid:undefined,
