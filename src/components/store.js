@@ -7,11 +7,11 @@ const store = createSlice({
         username:undefined           
     },
     reducers:{
-        signin:(state) =>{
+        signin(state,action) {
             state.uid = action.payload.uid,
             state.username = action.payload.username
         },
-        signout:(state) =>{
+        signout(state){
             state.uid=undefined,
             state.username=undefined
         }
