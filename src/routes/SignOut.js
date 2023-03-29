@@ -1,15 +1,13 @@
 import './css/SignUp.css'
 import React, { useState } from 'react';
 import { useSelector,useDispatch } from "react-redux";
+import { signout } from '../components/store';
 
 function SignOut() {
   const [sucMsg,setSucMsg] = useState('');
   const [misMsg,setMisMsg] = useState('');
   const uid = useSelector((state) => state.uid);
   const dispatch = useDispatch();
-  const setUid = () => {
-    dispatch({type:'signout'});
-  }
 
   const handleSubmit= (e) =>{
     e.preventDefault();
@@ -17,7 +15,7 @@ function SignOut() {
       setMisMsg('サインインしていません')
     }else{
       setSucMsg('サインアウトしました')
-      setUid()
+      dispatch(signout())
       setTimeout(()=>{
         window.location.reload('/users')
       },1*500)

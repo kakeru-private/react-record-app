@@ -2,7 +2,7 @@ import './css/SignUp.css'
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
+import { signin } from '../components/store';
 
 function SignIn() {
   const initialValues = {username:'',password:''};
@@ -11,9 +11,6 @@ function SignIn() {
   const [isSubmit,setIsSubmit] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const setUid = (uid,username) => {
-    dispatch({type:'signin',payload:{uid:uid,username:username}});
-  }
     
 
   const handleChange = (e) =>{
@@ -59,8 +56,7 @@ function SignIn() {
         (
           setFormValues(initialValues),
           navigate('/'),
-          setUid(data.uid,data.username)
-
+          dispatch(signin(data.uid,data.username))
         )
         
       )

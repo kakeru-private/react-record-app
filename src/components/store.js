@@ -1,26 +1,25 @@
-import {createStore} from 'redux';
+import {createSlice} from '@reduxjs/toolkit';
 
-const initState = {
-    uid:undefined,
-    username:undefined
-                
-};
-
-const reducer = (state = initState,action) =>{
-    switch(action.type){
-        case 'signin':
-            state.uid = action.payload.uid
+export const store = createSlice({
+    name:'user',
+    initState:{
+        uid:undefined,
+        username:undefined           
+    },
+    reducers:{
+        signin:(state) =>{
+            state.uid = action.payload.uid,
             state.username = action.payload.username
-        case 'signout':
-            state.uid=undefined
+        },
+        signout:(state) =>{
+            state.uid=undefined,
             state.username=undefined
-            
-        default:
-            state;
+        }
     }
-    
-};
+});
 
-const store = createStore(reducer);
 
-export default store;
+export const {signin} = store.actions;
+export const {signout} = store.actions;
+
+export default store.reducer;
