@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const store = createSlice({
     name:'user',
-    initState:{
+    initialState:{
         uid:undefined,
         username:undefined           
     },
