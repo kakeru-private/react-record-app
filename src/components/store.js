@@ -18,4 +18,4 @@ export const store = createSlice({
     }
 });
 
-export default store.reducer;
+export default store;
