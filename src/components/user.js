@@ -9,13 +9,13 @@ export const user = createSlice({
     reducers:{
         signin:(state,action) =>{
             console.log(action.payload.uid)
-            state.users.uid=action.payload.uid
-            state.users.username=action.payload.username
+            state.uid=action.payload.uid
+            state.username=action.payload.username
             
         },
         signout:(state)=>{
-            state.users.uid=undefined
-            state.users.username=undefined    
+            state.uid=undefined
+            state.username=undefined    
         }
     }
 });
