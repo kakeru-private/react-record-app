@@ -6,7 +6,7 @@ import { signout } from '../components/user';
 function SignOut() {
   const [sucMsg,setSucMsg] = useState('');
   const [misMsg,setMisMsg] = useState('');
-  const uid = useSelector((state) => state.uid);
+  const uid = useSelector((state) => state.users.uid);
   const dispatch = useDispatch();
 
   const handleSubmit= (e) =>{

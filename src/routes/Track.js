@@ -16,7 +16,7 @@ function Track() {
     const [rid,setRid] = useState(rInit);
     const initialValues = {title:'',fk_rid:0,artist:''};
     const [formValues,setFormValues] = useState(initialValues);
-    const uid = useSelector((state) => state.uid);
+    const uid = useSelector((state) => state.users.uid);
 
     const Dref = useRef();
     const Sref = useRef();

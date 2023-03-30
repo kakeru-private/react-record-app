@@ -23,7 +23,7 @@ function Record() {
     const [search, setSearch] = useState(rInit);
     const [track,setTrack] = useState(tInit);
     const [trackEdi, setTrackEdi] = useState(tInit);
-    const uid = useSelector((state) => state.uid);
+    const uid = useSelector((state) => state.users.uid);
     
   
     

@@ -19,7 +19,7 @@ function Book() {
   const [value, setValue] = useState(init);
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState(init);
-    const uid = useSelector((state) => state.uid);
+    const uid = useSelector((state) => state.users.uid);
 
     const Dref = useRef();
     const Sref = useRef();

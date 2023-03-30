@@ -13,7 +13,7 @@ function Memo() {
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState(init);
     const [add, setAdd] = useState('');
-    const uid = useSelector((state) => state.uid);
+    const uid = useSelector((state) => state.users.uid);
 
     const Dref = useRef();
     const Sref = useRef();
