@@ -56,7 +56,7 @@ function SignIn() {
         (
           setFormValues(initialValues),
           navigate('/'),
-          dispatch(signin(data.uid,data.username))
+          dispatch(signin({uid:data.uid,username:data.username}))
         )
         
       )
