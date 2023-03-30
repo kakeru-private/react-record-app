@@ -10,7 +10,7 @@ function Home() {
   const [memoValue, setMemoValue] = useState(mInit);
   const [todoSearchValue, setTodoSearchValue] = useState(tInit);
   const [memoSearchValue, setMemoSearchValue] = useState(mInit);
-  const uid = useSelector((state) => state.uid);
+  const uid = useSelector((state) => state.users.uid);
 
   const TDref = useRef();
   const TSref = useRef();
