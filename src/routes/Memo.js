@@ -130,11 +130,14 @@ function Memo() {
           
         })
         .then((res) => res.json())
-        .then((data) => data);
-          console.log(add);
-          setIns(ins+1);
-          setAdd('');
-          word.current.value='';
+        .then((data) => 
+          {return(
+            data,
+            console.log(add),
+            setIns(ins+1),
+            setAdd(''),
+            word.current.value=''
+          )});
       }
       
     }
