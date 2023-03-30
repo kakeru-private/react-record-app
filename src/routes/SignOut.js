@@ -1,7 +1,7 @@
 import './css/SignUp.css'
 import React, { useState } from 'react';
 import { useSelector,useDispatch } from "react-redux";
-import { signout } from '../components/store';
+import { signout } from '../components/user';
 
 function SignOut() {
   const [sucMsg,setSucMsg] = useState('');

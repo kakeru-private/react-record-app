@@ -2,7 +2,7 @@ import './css/SignUp.css'
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { signin } from '../components/store';
+import { signin } from '../components/user'
 
 function SignIn() {
   const initialValues = {username:'',password:''};
