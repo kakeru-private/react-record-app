@@ -8,7 +8,7 @@ export const user = createSlice({
     },
     reducers:{
         signin:(state,action) =>{
-            
+            console.log(action.payload)
             const uid=action.payload.uid
             const username=action.payload.username
             
