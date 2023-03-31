@@ -99,9 +99,11 @@ function Record() {
           
         })
         .then((res) => res.json())
-        .then((data) => data);
-
-        setIns(ins+1);
+        .then((data) => 
+        {return(
+          data,
+          setIns(ins+1)
+        )})
           
       }
     }
@@ -126,9 +128,11 @@ function Record() {
           
         })
         .then((res) => res.json())
-        .then((data) => data);
-
-        setIns(ins+1);
+        .then((data) => 
+        {return(
+          data,
+          setIns(ins+1)
+        )})
       }
       
 
@@ -242,8 +246,11 @@ function Record() {
             
         })
         .then((res) => res.json())
-        .then((data) => data)
-          setIns(ins+1);
+        .tthen((data) => 
+        {return(
+          data,
+          setIns(ins+1)
+        )})
       }
 
       
@@ -301,9 +308,11 @@ function Record() {
                 
               })
               .then((res) => res.json())
-              .then((data) => data);
-
-              setIns(ins+1);
+              .then((data) => 
+              {return(
+                data,
+                setIns(ins+1)
+              )})
             }
 
       }
@@ -354,9 +363,11 @@ function Record() {
             
           })
           .then((res) => res.json())
-          .then((data) => data);
-
-          setIns(ins+1);
+          .then((data) => 
+          {return(
+            data,
+            setIns(ins+1)
+          )})
         }
       } 
 
@@ -377,9 +388,11 @@ function Record() {
             
           })
           .then((res) => res.json())
-          .then((data) => data);
-
-          setIns(ins+1);
+          .then((data) => 
+          {return(
+            data,
+            setIns(ins+1)
+          )})
         }
       }
 

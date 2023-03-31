@@ -71,9 +71,11 @@ function Book() {
           
         })
         .then((res) => res.json())
-        .then((data) => data);
-
-        setIns(ins+1);
+        .then((data) => 
+        {return(
+          data,
+          setIns(ins+1)
+        )})
           
       }
     }
@@ -98,9 +100,11 @@ function Book() {
           
         })
         .then((res) => res.json())
-        .then((data) => data);
-
-        setIns(ins+1);
+        .then((data) => 
+        {return(
+          data,
+          setIns(ins+1)
+        )})
       }
       
 
@@ -210,8 +214,11 @@ function Book() {
             
         })
         .then((res) => res.json())
-        .then((data) => data)
-          setIns(ins+1);
+        .then((data) => 
+        {return(
+          data,
+          setIns(ins+1)
+        )})
       }
 
       

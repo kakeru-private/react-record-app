@@ -68,9 +68,11 @@ function Memo() {
           
         })
         .then((res) => res.json())
-        .then((data) => data);
-
-        setIns(ins+1);
+        .then((data) => 
+        {return(
+          data,
+          setIns(ins+1)
+        )})
           
       }
     }
@@ -95,9 +97,11 @@ function Memo() {
           
         })
         .then((res) => res.json())
-        .then((data) => data);
-
-        setIns(ins+1);
+        .then((data) => 
+        {return(
+          data,
+          setIns(ins+1)
+        )})
       }
       
 
