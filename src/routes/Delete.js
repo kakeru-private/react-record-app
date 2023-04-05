@@ -9,36 +9,6 @@ function Delete() {
   const [isSubmit,setIsSubmit] = useState(false);
   const [sucMsg,setSucMsg] = useState('');
   
-  const handleSuc=()=>{
-    const name = formValues.username;
-    const mailaddress = formValues.mailaddress;
-    const password = formValues.password;
-    fetch('https://react-record-todo.herokuapp.com/users/delete',{
-      method:'POST',mode:'cors',credentials: 'include',
-      headers:{'Accept':'application/json','Content-Type': 'application/json'},
-      body: JSON.stringify(
-        {
-          name:name,
-          mail:mailaddress,
-          password:password
-        }
-        
-        )
-        
-    })
-    .then((res) => res.json())
-    .then((data) => {
-      return(
-        setSucMsg('削除が完了しました'),
-        setFormValues(initialValues),
-        console.log(data),
-        setTimeout(()=>{
-          window.location.reload('/users')
-        },1*500)
-        
-      )
-    })
-  }
 
   const handleChange = (e) =>{
     //console.log(e.target.name);
@@ -62,8 +32,8 @@ function Delete() {
     const name = formValues.username;
     const mailaddress = formValues.mailaddress;
     const password = formValues.password;
-    fetch('https://react-record-todo.herokuapp.com/users',{
-      method:'GET',mode:'cors',credentials: 'include',
+    fetch('https://react-record-todo.herokuapp.com/users/delete',{
+      method:'POST',mode:'cors',credentials: 'include',
       headers:{'Accept':'application/json','Content-Type': 'application/json'},
       body: JSON.stringify(
         {
@@ -77,12 +47,22 @@ function Delete() {
     })
     .then((res) => res.json())
     .then((data) => {
-      return(
-        /*console.log(data.length),*/
-
-        data.message === 'passmiss' ? setFormErrors({...formErrors,password:'emailかpasswordが間違っています'}) : data.message === 'notFound' ? setFormErrors({...formErrors,username:'そのusernameは存在しません'}): 
-        handleSuc()
-      )
+      if(data.message === 'connection err'){
+        setTimeout(()=>{
+          handleLogin()
+        },1*500)
+      }else if(data.message === 'passmiss'){
+        setFormErrors({...formErrors,password:'emailかpasswordが間違っています'})
+      }else if(data.message === 'notFound'){
+        setFormErrors({...formErrors,username:'そのusernameは存在しません'})
+      }else if(data.message === 'success'){
+        setSucMsg('削除が完了しました')
+        setFormValues(initialValues)
+        console.log(data)
+        setTimeout(()=>{
+          window.location.reload('/users')
+        },1*500)
+      }
     })
 
     setIsSubmit(false);

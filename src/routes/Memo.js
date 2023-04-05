@@ -68,11 +68,15 @@ function Memo() {
           
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleEdi()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }
+          })
           
       }
     }
@@ -97,11 +101,15 @@ function Memo() {
           
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
+        .then((data) => {
+        if(data.message === 'connection err'){
+          setTimeout(()=>{
+            handleDle()
+          },1*500)
+        }else if(data.message === 'success'){
           setIns(ins+1)
-        )})
+        }
+      })
       }
       
 
@@ -134,14 +142,17 @@ function Memo() {
           
         })
         .then((res) => res.json())
-        .then((data) => 
-          {return(
-            data,
-            console.log(add),
-            setIns(ins+1),
-            setAdd(''),
+        .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleAdd()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+            setAdd('')
             word.current.value=''
-          )});
+          }
+          });
       }
       
     }
@@ -160,20 +171,19 @@ function Memo() {
       })
       .then((res) => res.json())
       .then((data) => {
-        return (
-          data.length > 0 ?
-          (
-            setValue(data) ,
-            setSearch(data)
-          )
-          :
-          (
-            setValue(init) ,
-            setSearch(init)
-          ) 
-
-          
-        )})
+        if(data.message === 'connection err'){
+          setTimeout(()=>{
+            setIns(ins+1)
+          },1*500)
+        }else if(data.length > 0 ){
+          setValue(data) ,
+          setSearch(data)
+        }else{
+          setValue(init) 
+          setSearch(init)
+        }
+        word.current.value=''
+        })
       
     }, [ins])
 
@@ -245,7 +255,7 @@ function Memo() {
                     </tbody>
 
                     
-                      {uid === undefined ? '' : search.map(({memo,update_date,memo_id})=> (
+                      {search.length < 1 ? '' : search.map(({memo,update_date,memo_id})=> (
                       <tbody>
                         <tr key={memo_id}>
                           <td>

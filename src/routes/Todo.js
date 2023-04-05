@@ -72,11 +72,15 @@ function Todo() {
           
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleEdi()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }
+        })
           
       }
     }
@@ -101,11 +105,14 @@ function Todo() {
           
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleDle()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }})
       }
       
 
@@ -169,11 +176,14 @@ function Todo() {
             
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleSubmit()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }})
           
       }
 
@@ -197,20 +207,20 @@ function Todo() {
         })
         .then((res) => res.json())
         .then((data) => {
-          return (
-            data.length > 0 ?
-            (
-              setValue(data) ,
-              setSearch(data)
-            )
-            :
-            (
-              setValue(init) ,
-              setSearch(init)
-            ),
-            
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              setIns(ins+1)
+            },1*500)
+          }else if(data.length > 0 ){
+            setValue(data) 
+            setSearch(data)
+          }else{
+            setValue(init) 
+            setSearch(init)
+          }
+          
             word.current.value=''
-          )})
+          })
       
       
       
@@ -274,7 +284,7 @@ function Todo() {
                 </tbody>
 
                 
-                  {search.map(({todo,deadline,todo_id,remarks})=> (
+                  {search.length < 1 ?  '' : search.map(({todo,deadline,todo_id,remarks})=> (
                   <tbody>
                     <tr key={todo_id}>
                       <td>

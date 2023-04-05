@@ -11,6 +11,7 @@ function Home() {
   const [todoSearchValue, setTodoSearchValue] = useState(tInit);
   const [memoSearchValue, setMemoSearchValue] = useState(mInit);
   const uid = useSelector((state) => state.users.uid);
+  const [ins, setIns] = useState(0);
 
   const TDref = useRef();
   const TSref = useRef();
@@ -66,26 +67,27 @@ function Home() {
     })
     .then((res) => res.json())
     .then((data) => {
-      return (
-        data.length > 0 ?
-        (
-          setMemoValue(data[0]),
-          setTodoValue(data[1]),
-          setMemoSearchValue(data[0]),
-          setTodoSearchValue(data[1])
-        )
-        :
-        (
-          setMemoValue(mInit),
-          setTodoValue(tInit),
-          setMemoSearchValue(mInit),
-          setTodoSearchValue(tInit)
-        ),
+      if(data.message === 'connection err'){
+        setTimeout(()=>{
+          setIns(ins+1)
+        },1*500)
+      }else if(data.length > 0){
+        setMemoValue(data[0])
+        setTodoValue(data[1])
+        setMemoSearchValue(data[0])
+        setTodoSearchValue(data[1])
+      }else{
+        setMemoValue(mInit)
+        setTodoValue(tInit)
+        setMemoSearchValue(mInit)
+        setTodoSearchValue(tInit)
+      }
+      
         
         word.current.value=''
-      )})
+      })
       
-  }, [])
+  }, [ins])
     return(
       <div className='top'>
         <h1 id='top' className='title'>HOME</h1>
@@ -150,7 +152,7 @@ function Home() {
                     </tbody>
 
                     <tbody>
-                      {uid === undefined ? '': memoSearchValue.map(({memo,update_date,memo_id})=> (
+                      {memoSearchValue.length < 1 ? '': memoSearchValue.map(({memo,update_date,memo_id})=> (
                       
                         <tr key={memo_id}>
                           <td>
@@ -213,7 +215,7 @@ function Home() {
                 </tbody>
 
                 <tbody>
-                  {todoSearchValue.map(({todo,deadline,todo_id,remarks})=> (
+                  {todoSearchValue.length < 1 ? '' : todoSearchValue.map(({todo,deadline,todo_id,remarks})=> (
                   
                     <tr key={todo_id}>
                       <td>

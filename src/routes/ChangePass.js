@@ -46,18 +46,20 @@ function ChangePass() {
     })
     .then((res) => res.json())
     .then((data) => {
-      return(
-
-        data.message !==  'success' ?
-         setFormErrors({...formErrors,password:'usernameまたはemailが間違っています'}) 
-         : 
-         (setSucMsg('変更が完了しました'),
+      if(data.message === 'connection err'){
+        setTimeout(()=>{
+          handleLogin()
+         },1*500)
+      }else if(data.message === 'success'){
+        setSucMsg('変更が完了しました'),
          setFormValues(initialValues),
          setTimeout(()=>{
           window.location.reload('/users')
-         },1*1000))
-        
-      )
+         },1*1000)
+      }else{
+        setFormErrors({...formErrors,password:'usernameまたはemailが間違っています'}) 
+      }
+
     })
 
     setIsSubmit(false);

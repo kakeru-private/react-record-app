@@ -28,15 +28,21 @@ function SignUp() {
     })
     .then((res) => res.json())
     .then((data) => {
-      return(
+      if(data.message === 'connection err'){
+        setTimeout(()=>{
+          handleSuc()
+       },1*500)
+      }else{
+        
         setSucMsg('登録が完了しました'),
         setFormValues(initialValues),
         console.log(data),
         setTimeout(()=>{
           window.location.reload('/users')
          },1*500)
-      )
-    })
+    
+      }})
+    
   }
 
   const handleChange = (e) =>{
@@ -76,12 +82,18 @@ function SignUp() {
     })
     .then((res) => res.json())
     .then((data) => {
-      return(
-        /*console.log(data.length),*/
-
+      if(data.message === 'connection err'){
+        setTimeout(()=>{
+          handleLogin()
+        },1*500)
+      }else{
+       
+          
         data.length > 0 ? setFormErrors({...formErrors,username:'そのusernameは使用できません'}) : handleSuc()
+          
         
-      )
+      }
+      
     })
 
     setIsSubmit(false);

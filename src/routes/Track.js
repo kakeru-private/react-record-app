@@ -91,11 +91,14 @@ function Track() {
           
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleEdi()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }})
           
       }
     }
@@ -119,11 +122,14 @@ function Track() {
           
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleDel()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }})
       }
       
 
@@ -153,11 +159,14 @@ function Track() {
             
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleTrackAdd()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }})
           
       }
 
@@ -184,24 +193,22 @@ function Track() {
         })
         .then((res) => res.json())
         .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              setIns(ins+1)
+            },1*500)
+          }else if(data.length > 0){
+            setValue(data[0]) 
+            setSearch(data[0])
+            setRid(data[1])
+          }else{
+            setValue(init) 
+            setSearch(init)
+            setRid(rInit)
+          }
           
-          
-          return (
-            data.length > 0 ?
-            (
-              setValue(data[0]) ,
-              setSearch(data[0]),
-              setRid(data[1])
-            )
-            :
-            (
-              setValue(init) ,
-              setSearch(init),
-              setRid(rInit)
-            ),
-            
             word.current.value=''
-          )})
+          })
       
       
           
@@ -269,7 +276,7 @@ function Track() {
                 </tbody>
 
                 
-                  {search.map(({track_id,tTitle,artist,title,fk_rid})=> (
+                  {search.length < 1 ? '' : search.map(({track_id,tTitle,artist,title,fk_rid})=> (
                      
                     <tbody>
                     <tr key={track_id}>

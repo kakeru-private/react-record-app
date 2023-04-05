@@ -99,11 +99,14 @@ function Record() {
           
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleEdi()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }})
           
       }
     }
@@ -128,11 +131,14 @@ function Record() {
           
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) =>{
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleDel()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }})
       }
       
 
@@ -246,11 +252,14 @@ function Record() {
             
         })
         .then((res) => res.json())
-        .tthen((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .tthen((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleSubmit()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }})
       }
 
       
@@ -308,11 +317,14 @@ function Record() {
                 
               })
               .then((res) => res.json())
-              .then((data) => 
-              {return(
-                data,
-                setIns(ins+1)
-              )})
+              .then((data) => {
+                if(data.message === 'connection err'){
+                  setTimeout(()=>{
+                    handleTrackAdd()
+                  },1*500)
+                }else if(data.message === 'success'){
+                  setIns(ins+1)
+                }})
             }
 
       }
@@ -363,11 +375,14 @@ function Record() {
             
           })
           .then((res) => res.json())
-          .then((data) => 
-          {return(
-            data,
-            setIns(ins+1)
-          )})
+          .then((data) => {
+            if(data.message === 'connection err'){
+              setTimeout(()=>{
+                handleTEdi()
+              },1*500)
+            }else if(data.message === 'success'){
+              setIns(ins+1)
+            }})
         }
       } 
 
@@ -388,11 +403,14 @@ function Record() {
             
           })
           .then((res) => res.json())
-          .then((data) => 
-          {return(
-            data,
-            setIns(ins+1)
-          )})
+          .then((data) => {
+            if(data.message === 'connection err'){
+              setTimeout(()=>{
+                handleTDel()
+              },1*500)
+            }else if(data.message === 'success'){
+              setIns(ins+1)
+            }})
         }
       }
 
@@ -410,27 +428,27 @@ function Record() {
         })
         .then((res) => res.json())
         .then((data) => {
-          
-          
-          return (
-            data.length > 0 ? 
-            (
-              setValue(data[0]) ,
-              setSearch(data[0]),
-              setTrack(data[1]) ,
-              setTrackEdi(data[1]),
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              setIns(ins+1)
+            },1*500)
+          }else if(data.length > 0){
+            setValue(data[0]) 
+              setSearch(data[0])
+              setTrack(data[1]) 
+              setTrackEdi(data[1])
               setTrackForm(data[2])
-            ) 
-            :
-             (
-              setValue(rInit) ,
-              setSearch(rInit),
-              setTrack(tInit) ,
-              setTrackEdi(tInit),
-              setTrackForm(tfInit)
-            ),
+          }else{
+            setValue(rInit) 
+            setSearch(rInit)
+            setTrack(tInit) 
+            setTrackEdi(tInit)
+            setTrackForm(tfInit)
+          }
+          
+          
             word.current.value=''
-          )})
+          })
       
       
           
@@ -501,7 +519,7 @@ function Record() {
                 </tbody>
 
                 
-                  {search.map(({record_num,release_date,record_id,title,artist,numOfTrack,site},index)=> {
+                  {search.length < 1 ? '' : search.map(({record_num,release_date,record_id,title,artist,numOfTrack,site},index)=> {
                     
                     return (
                      
@@ -586,7 +604,7 @@ function Record() {
 
                     
                     
-                      {trackEdi.map(({track_id,tTitle,fk_rid,artist})=>{
+                      {trackEdi.length < 1 ? '' : trackEdi.map(({track_id,tTitle,fk_rid,artist})=>{
                       if(fk_rid === record_id ){
                         return(
                           <tr key={track_id} 

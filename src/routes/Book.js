@@ -71,11 +71,15 @@ function Book() {
           
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleEdi()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }
+          })
           
       }
     }
@@ -100,11 +104,15 @@ function Book() {
           
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) => {
+          if(data.message === 'connection err'){
+            setTimeout(()=>{
+              handleDle()
+            },1*500)
+          }else if(data.message === 'success'){
+            setIns(ins+1)
+          }
+          })
       }
       
 
@@ -214,16 +222,18 @@ function Book() {
             
         })
         .then((res) => res.json())
-        .then((data) => 
-        {return(
-          data,
-          setIns(ins+1)
-        )})
+        .then((data) => {
+            if(data.message === 'connection err'){
+              setTimeout(()=>{
+                handleSubmit()
+              },1*500)
+            }else if(data.message === 'success'){
+              setIns(ins+1)
+              setFormValues({book:'',release_date:time,author:''});
+            }
+          })
       }
 
-      
-      setFormValues({book:'',release_date:time,author:''});
-      
     };
   
 
@@ -245,20 +255,21 @@ function Book() {
       })
       .then((res) => res.json())
       .then((data) => {
-        return (
-          data.length > 0 ?
-          (
-            setValue(data) ,
-            setSearch(data)
-          )
-          :
-          (
-            setValue(init) ,
-            setSearch(init)
-          ),
+        if(data.message === 'connection err'){
+          setTimeout(()=>{
+            setIns(ins+1)
+          },1*500)
+        }else if(data.length > 0){
+          setValue(data) 
+          setSearch(data)
+        }else{
+          setValue(init)
+          setSearch(init)
+        }
+        
           
-          word.current.value=''
-        )});
+        word.current.value=''
+        });
       
     }, [ins])
 
@@ -322,7 +333,7 @@ function Book() {
             </tbody>
 
             
-              {search.map(({title,release_date,book_id,author,publisher,site,isbn})=> (
+              {search.length < 1 ? '' : search.map(({title,release_date,book_id,author,publisher,site,isbn})=> (
               
               <tbody>
                 <tr key={book_id}>

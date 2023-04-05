@@ -48,18 +48,19 @@ function SignIn() {
     })
     .then((res) => res.json())
     .then((data) => {
-      return(
-
-        data.message !==  'success' ?
-         setFormErrors({...formErrors,password:'usernameまたはpasswordが間違っています'})
-         : 
-        (
-          setFormValues(initialValues),
-          navigate('/'),
-          dispatch(signin({uid:data.uid,username:data.username}))
-        )
+      if(data.message === 'connection err'){
+        setTimeout(()=>{
+          handleLogin()
+        },1*500)
+      }else if(data.message === 'success'){
         
-      )
+        setFormValues(initialValues),
+        navigate('/'),
+        dispatch(signin({uid:data.uid,username:data.username}))
+      }else{
+        setFormErrors({...formErrors,password:'usernameまたはpasswordが間違っています'})
+      }
+      
     })
 
     setIsSubmit(false);
