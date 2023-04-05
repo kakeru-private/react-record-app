@@ -107,7 +107,7 @@ function Book() {
         .then((data) => {
           if(data.message === 'connection err'){
             setTimeout(()=>{
-              handleDle()
+              handleDel()
             },1*500)
           }else if(data.message === 'success'){
             setIns(ins+1)

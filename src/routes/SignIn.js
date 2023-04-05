@@ -54,8 +54,8 @@ function SignIn() {
         },1*500)
       }else if(data.message === 'success'){
         
-        setFormValues(initialValues),
-        navigate('/'),
+        setFormValues(initialValues)
+        navigate('/')
         dispatch(signin({uid:data.uid,username:data.username}))
       }else{
         setFormErrors({...formErrors,password:'usernameまたはpasswordが間違っています'})

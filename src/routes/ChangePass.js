@@ -51,8 +51,8 @@ function ChangePass() {
           handleLogin()
          },1*500)
       }else if(data.message === 'success'){
-        setSucMsg('変更が完了しました'),
-         setFormValues(initialValues),
+        setSucMsg('変更が完了しました')
+         setFormValues(initialValues)
          setTimeout(()=>{
           window.location.reload('/users')
          },1*1000)

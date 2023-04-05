@@ -34,9 +34,9 @@ function SignUp() {
        },1*500)
       }else{
         
-        setSucMsg('登録が完了しました'),
-        setFormValues(initialValues),
-        console.log(data),
+        setSucMsg('登録が完了しました')
+        setFormValues(initialValues)
+        console.log(data)
         setTimeout(()=>{
           window.location.reload('/users')
          },1*500)
