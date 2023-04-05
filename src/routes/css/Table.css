@@ -350,6 +350,7 @@ button:hover{
 .anc{
   margin-top: 5px;
   position: sticky;
+  top:120px;
   right: 0;
   font-size: 20px;
   
