@@ -348,6 +348,7 @@ button:hover{
 
 
 .anc{
+  flex:10%;
   margin-top: 5px;
   position: sticky;
   top:120px;
