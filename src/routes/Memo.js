@@ -217,7 +217,8 @@ function Memo() {
         
           </div>
 
-          </div>
+          
+        
 
 
             <div className='Container'>
@@ -310,7 +311,7 @@ function Memo() {
 
                 
                 </div>         
-            
+                </div>
             
             </div>
             

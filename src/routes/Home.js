@@ -118,7 +118,7 @@ function Home() {
             </div>
         </div>
       
-
+        <div className='mainCont'>
         <div className='searchContainer'>
             
             <div id='search'>
@@ -262,7 +262,7 @@ function Home() {
 
             </div>
 
-            
+            </div>
 
             </div>
             
