@@ -69,12 +69,14 @@ function Memo() {
         })
         .then((res) => res.json())
         .then((data) => {
-          if(data.message === 'connection err'){
-            setTimeout(()=>{
-              handleEdi()
-            },1*500)
-          }else if(data.message === 'success'){
-            setIns(ins+1)
+          if(uid !== undefined){
+            if(data.message === 'connection err'){
+              setTimeout(()=>{
+                handleEdi()
+              },1*500)
+            }else if(data.message === 'success'){
+              setIns(ins+1)
+            }
           }
           })
           
@@ -102,14 +104,16 @@ function Memo() {
         })
         .then((res) => res.json())
         .then((data) => {
-        if(data.message === 'connection err'){
-          setTimeout(()=>{
-            handleDel()
-          },1*500)
-        }else if(data.message === 'success'){
-          setIns(ins+1)
-        }
-      })
+          if(uid !== undefined){
+            if(data.message === 'connection err'){
+              setTimeout(()=>{
+                handleDel()
+              },1*500)
+            }else if(data.message === 'success'){
+              setIns(ins+1)
+            }
+          }
+        })
       }
       
 
@@ -143,14 +147,16 @@ function Memo() {
         })
         .then((res) => res.json())
         .then((data) => {
-          if(data.message === 'connection err'){
-            setTimeout(()=>{
-              handleAdd()
-            },1*500)
-          }else if(data.message === 'success'){
-            setIns(ins+1)
-            setAdd('')
-            word.current.value=''
+          if(uid !== undefined){
+            if(data.message === 'connection err'){
+              setTimeout(()=>{
+                handleAdd()
+              },1*500)
+            }else if(data.message === 'success'){
+              setIns(ins+1)
+              setAdd('')
+              word.current.value=''
+            }
           }
           });
       }
@@ -171,7 +177,7 @@ function Memo() {
       })
       .then((res) => res.json())
       .then((data) => {
-        if(data.message === 'connection err'){
+        if(data.message === 'connection err' && uid !== undefined){
           setTimeout(()=>{
             setIns(ins+1)
           },1*500)

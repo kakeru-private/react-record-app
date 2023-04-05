@@ -93,13 +93,14 @@ function Track() {
         })
         .then((res) => res.json())
         .then((data) => {
+          if(uid !== undefined){
           if(data.message === 'connection err'){
             setTimeout(()=>{
               handleEdi()
             },1*500)
           }else if(data.message === 'success'){
             setIns(ins+1)
-          }})
+        }}})
           
       }
     }
@@ -124,13 +125,14 @@ function Track() {
         })
         .then((res) => res.json())
         .then((data) => {
+          if(uid !== undefined){
           if(data.message === 'connection err'){
             setTimeout(()=>{
               handleDel()
             },1*500)
           }else if(data.message === 'success'){
             setIns(ins+1)
-          }})
+          }}})
       }
       
 
@@ -161,13 +163,14 @@ function Track() {
         })
         .then((res) => res.json())
         .then((data) => {
+          if(uid !== undefined){
           if(data.message === 'connection err'){
             setTimeout(()=>{
               handleTrackAdd()
             },1*500)
           }else if(data.message === 'success'){
             setIns(ins+1)
-          }})
+          }}})
           
       }
 
@@ -194,7 +197,7 @@ function Track() {
         })
         .then((res) => res.json())
         .then((data) => {
-          if(data.message === 'connection err'){
+          if(data.message === 'connection err' && uid !== undefined){
             setTimeout(()=>{
               setIns(ins+1)
             },1*500)

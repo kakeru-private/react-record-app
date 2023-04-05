@@ -70,7 +70,7 @@ function Home() {
     })
     .then((res) => res.json())
     .then((data) => {
-      if(data.message === 'connection err'){
+      if(data.message === 'connection err' && uid !== undefined){
         setTimeout(()=>{
           setIns(ins+1)
         },1*500)
