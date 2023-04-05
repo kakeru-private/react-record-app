@@ -284,8 +284,8 @@ function Book() {
         
         
     <h1 className='title'>BOOK</h1>
-      
-    <AncLink />
+    <div className='layout'>
+    
     
     <div className='tableContainer'>
       
@@ -445,8 +445,8 @@ function Book() {
                 
       
     </div>
-      
-    
+    <AncLink />
+    </div>
     </div>
     
         

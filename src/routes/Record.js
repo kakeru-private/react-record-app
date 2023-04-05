@@ -473,7 +473,9 @@ function Record() {
         
         
         <h1 className='title'>RECORD</h1>
-        <AncLink />
+        <div className='layout'>
+        
+        
         
         <div className='tableContainer'>
 
@@ -757,7 +759,8 @@ function Record() {
                     
           
         </div>
-            
+        <AncLink />
+        </div>
         
         </div>
         

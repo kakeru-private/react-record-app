@@ -106,17 +106,9 @@ function Home() {
     return(
       <div className='top'>
         <h1 id='top' className='title'>HOME</h1>
-        <div className='anc'>
-            <div className='ancin'>
-              <ul>
-                  <p>NAVIGATE</p>
-                  <ol><AnchorLink href='#top' offset={100}>TOP</AnchorLink></ol>
-                  <ol><AnchorLink href='#search' offset={100}>SEARCH</AnchorLink></ol>
-                  <ol><AnchorLink href='#memo' offset={100}>MEMO</AnchorLink></ol>
-                  <ol><AnchorLink href='#todo' offset={100}>TODO</AnchorLink></ol>
-              </ul>
-            </div>
-        </div>
+        <div className='layout'>
+        
+        
       
         <div className='mainCont'>
         <div className='searchContainer'>
@@ -270,6 +262,18 @@ function Home() {
           </div>
                     
           
+        </div>
+        <div className='anc'>
+            <div className='ancin'>
+              <ul>
+                  <p>NAVIGATE</p>
+                  <ol><AnchorLink href='#top' offset={100}>TOP</AnchorLink></ol>
+                  <ol><AnchorLink href='#search' offset={100}>SEARCH</AnchorLink></ol>
+                  <ol><AnchorLink href='#memo' offset={100}>MEMO</AnchorLink></ol>
+                  <ol><AnchorLink href='#todo' offset={100}>TODO</AnchorLink></ol>
+              </ul>
+            </div>
+        </div>
         </div>
         </div>
         

@@ -1,5 +1,6 @@
 import React from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import '../routes/css/Table.css'
 
 function AncLink() {
   return (

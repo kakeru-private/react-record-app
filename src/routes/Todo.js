@@ -235,7 +235,9 @@ function Todo() {
         
         
         <h1 className='title'>TODO</h1>
-        <AncLink />
+        <div className='layout'>
+        
+        
         
         <div className='tableContainer'>
 
@@ -364,7 +366,8 @@ function Todo() {
           
         </div>
           
-        
+        <AncLink />
+        </div>
         </div>
         
       
