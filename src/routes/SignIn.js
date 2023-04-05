@@ -48,6 +48,7 @@ function SignIn() {
     })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data.message)
       if(data.message === 'connection err'){
         setTimeout(()=>{
           handleLogin()
@@ -57,7 +58,7 @@ function SignIn() {
         setFormValues(initialValues)
         navigate('/')
         dispatch(signin({uid:data.uid,username:data.username}))
-      }else{
+      }else if(data.message === 'success'){
         setFormErrors({...formErrors,password:'usernameまたはpasswordが間違っています'})
       }
       
