@@ -17,7 +17,8 @@ function Track() {
     const initialValues = {title:'',fk_rid:0,artist:''};
     const [formValues,setFormValues] = useState(initialValues);
     const uid = useSelector((state) => state.users.uid);
-
+    const [tlen,settLen] = useState(false);
+    const [rlen,setrLen] = useState(false);
     const Dref = useRef();
     const Sref = useRef();
     const word = useRef();
@@ -197,14 +198,24 @@ function Track() {
             setTimeout(()=>{
               setIns(ins+1)
             },1*500)
+            settLen(false)
+            setrLen(false)
           }else if(data.length > 0){
-            setValue(data[0]) 
-            setSearch(data[0])
-            setRid(data[1])
+            if(data.length[0] > 0){
+              setValue(data[0]) 
+              setSearch(data[0])
+              settLen(true)
+            }
+            if(data.length[1] > 0){
+              setRid(data[1])
+              setrLen(true)
+            }
           }else{
             setValue(init) 
             setSearch(init)
             setRid(rInit)
+            settLen(false)
+            setrLen(false)
           }
           
             word.current.value=''
@@ -276,7 +287,7 @@ function Track() {
                 </tbody>
 
                 
-                  {search.length < 1 ? '' : search.map(({track_id,tTitle,artist,title,fk_rid})=> (
+                  {tlen ? search.map(({track_id,tTitle,artist,title,fk_rid})=> (
                      
                     <tbody>
                     <tr key={track_id}>
@@ -325,7 +336,7 @@ function Track() {
                     
                        
                     </tbody>     
-                  ))}
+                  )):''}
                      
                      <br/><br/>
                     
@@ -347,9 +358,9 @@ function Track() {
                       <td>
                       <select name='fk_rid' className='todoForm dataForm' onChange={(e)=>handleSChange(e)}>
                           <option value='0' hidden>選択してください</option>
-                          {rid.map(({record_id,title})=>(
+                          {rlen ? rid.map(({record_id,title})=>(
                             <option value={record_id}>RECORD id:{record_id} RECORD:{title}</option>
-                          ))}
+                          )):''}
                         </select>
                         <hr />
                       </td>

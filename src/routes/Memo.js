@@ -14,7 +14,7 @@ function Memo() {
     const [search, setSearch] = useState(init);
     const [add, setAdd] = useState('');
     const uid = useSelector((state) => state.users.uid);
-
+    const [len,setLen] = useState(false);
     const Dref = useRef();
     const Sref = useRef();
     const word = useRef();
@@ -175,12 +175,15 @@ function Memo() {
           setTimeout(()=>{
             setIns(ins+1)
           },1*500)
+          setLen(false)
         }else if(data.length > 0 ){
           setValue(data) 
           setSearch(data)
+          setLen(true)
         }else{
           setValue(init) 
           setSearch(init)
+          setLen(false)
         }
         word.current.value=''
         })
@@ -255,7 +258,7 @@ function Memo() {
                     </tbody>
 
                     
-                      {search.length < 1 ? '' : search.map(({memo,update_date,memo_id})=> (
+                      {len ? search.map(({memo,update_date,memo_id})=> (
                       <tbody>
                         <tr key={memo_id}>
                           <td>
@@ -279,7 +282,7 @@ function Memo() {
                         
                         </tr>
                         </tbody>
-                      ))}
+                      )):''}
                      
                         <br/><br/>
                         <tr id='add'>

@@ -12,6 +12,9 @@ function Home() {
   const [memoSearchValue, setMemoSearchValue] = useState(mInit);
   const uid = useSelector((state) => state.users.uid);
   const [ins, setIns] = useState(0);
+  const [mlen,setmLen] = useState(false);
+  const [tlen,settLen] = useState(false);
+
 
   const TDref = useRef();
   const TSref = useRef();
@@ -71,16 +74,28 @@ function Home() {
         setTimeout(()=>{
           setIns(ins+1)
         },1*500)
+        setmLen(false)
+        settLen(false)
       }else if(data.length > 0){
-        setMemoValue(data[0])
-        setTodoValue(data[1])
-        setMemoSearchValue(data[0])
-        setTodoSearchValue(data[1])
+        if(data[0].length > 0){
+          setMemoValue(data[0])
+          setMemoSearchValue(data[0])
+          setmLen(true)
+        }
+        if(data[1].length > 0){
+          setTodoValue(data[1])
+          setTodoSearchValue(data[1])
+          settLen(true)
+        }
+        
+        
       }else{
         setMemoValue(mInit)
         setTodoValue(tInit)
         setMemoSearchValue(mInit)
         setTodoSearchValue(tInit)
+        setmLen(false)
+        settLen(false)
       }
       
         
@@ -152,7 +167,7 @@ function Home() {
                     </tbody>
 
                     <tbody>
-                      {memoSearchValue.length < 1 ? '': memoSearchValue.map(({memo,update_date,memo_id})=> (
+                      {mlen ? memoSearchValue.map(({memo,update_date,memo_id})=> (
                       
                         <tr key={memo_id}>
                           <td>
@@ -172,7 +187,7 @@ function Home() {
                           
                         </tr>
                         
-                      ))}
+                      )):''}
                       </tbody>
                   </table>
                   </div>
@@ -215,7 +230,7 @@ function Home() {
                 </tbody>
 
                 <tbody>
-                  {todoSearchValue.length < 1 ? '' : todoSearchValue.map(({todo,deadline,todo_id,remarks})=> (
+                  {tlen ? todoSearchValue.map(({todo,deadline,todo_id,remarks})=> (
                   
                     <tr key={todo_id}>
                       <td>
@@ -241,7 +256,7 @@ function Home() {
                     
                     </tr>
                     
-                  ))}
+                  )):''}
                   </tbody>
               </table>
 

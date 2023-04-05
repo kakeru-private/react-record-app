@@ -24,7 +24,8 @@ function Record() {
     const [track,setTrack] = useState(tInit);
     const [trackEdi, setTrackEdi] = useState(tInit);
     const uid = useSelector((state) => state.users.uid);
-    
+    const [rlen,setrLen] = useState(false);
+    const [tlen,settLen] = useState(false);
   
     
     const Dref = useRef();
@@ -432,18 +433,30 @@ function Record() {
             setTimeout(()=>{
               setIns(ins+1)
             },1*500)
+            setrLen(false)
+            settLen(false)
           }else if(data.length > 0){
-            setValue(data[0]) 
+            if(data[0].length>0){
+              setValue(data[0])   
               setSearch(data[0])
+              setrLen(true)
+            }
+
+            if(data[1].length){
               setTrack(data[1]) 
               setTrackEdi(data[1])
-              setTrackForm(data[2])
+              settLen(true)
+            }
+            setTrackForm(data[2])
+              
           }else{
             setValue(rInit) 
             setSearch(rInit)
             setTrack(tInit) 
             setTrackEdi(tInit)
             setTrackForm(tfInit)
+            setrLen(false)
+            settLen(false)
           }
           
           
@@ -519,7 +532,7 @@ function Record() {
                 </tbody>
 
                 
-                  {search.length < 1 ? '' : search.map(({record_num,release_date,record_id,title,artist,numOfTrack,site},index)=> {
+                  {rlen ? search.map(({record_num,release_date,record_id,title,artist,numOfTrack,site},index)=> {
                     
                     return (
                      
@@ -604,7 +617,7 @@ function Record() {
 
                     
                     
-                      {trackEdi.length < 1 ? '' : trackEdi.map(({track_id,tTitle,fk_rid,artist})=>{
+                      {tlen ? trackEdi.map(({track_id,tTitle,fk_rid,artist})=>{
                       if(fk_rid === record_id ){
                         return(
                           <tr key={track_id} 
@@ -652,7 +665,7 @@ function Record() {
                           
                               
                             
-                    )}})}
+                    )}}):''}
                      
                      <tr>
                           <td></td>
@@ -679,7 +692,7 @@ function Record() {
                      
                       </tbody>
                     
-                    )})}
+                    )}):''}
 
                    
                     <br/><br/>

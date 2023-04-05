@@ -20,6 +20,8 @@ function Book() {
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState(init);
     const uid = useSelector((state) => state.users.uid);
+  const [len,setLen] = useState(false);
+
 
     const Dref = useRef();
     const Sref = useRef();
@@ -259,12 +261,15 @@ function Book() {
           setTimeout(()=>{
             setIns(ins+1)
           },1*500)
+          setLen(false)
         }else if(data.length > 0){
           setValue(data) 
           setSearch(data)
+          setLen(true)
         }else{
           setValue(init)
           setSearch(init)
+          setLen(false)
         }
         
           
@@ -333,7 +338,7 @@ function Book() {
             </tbody>
 
             
-              {search.length < 1 ? '' : search.map(({title,release_date,book_id,author,publisher,site,isbn})=> (
+              {len ? search.map(({title,release_date,book_id,author,publisher,site,isbn})=> (
               
               <tbody>
                 <tr key={book_id}>
@@ -379,7 +384,7 @@ function Book() {
                 </tr>
                 </tbody>
                 
-              ))}
+              )):''}
                 <br/><br/>
                 
                

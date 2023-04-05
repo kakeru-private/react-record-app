@@ -17,7 +17,7 @@ function Todo() {
     const [ins,setIns] = useState(0);
     const [search, setSearch] = useState(init);
     const uid = useSelector((state) => state.users.uid);
-
+    const [len,setLen] = useState(false);
     
     const Dref = useRef();
     const Sref = useRef();
@@ -211,12 +211,15 @@ function Todo() {
             setTimeout(()=>{
               setIns(ins+1)
             },1*500)
+            setLen(false)
           }else if(data.length > 0 ){
             setValue(data) 
             setSearch(data)
+            setLen(true)
           }else{
             setValue(init) 
             setSearch(init)
+            setLen(false)
           }
           
             word.current.value=''
@@ -284,7 +287,7 @@ function Todo() {
                 </tbody>
 
                 
-                  {search.length < 1 ?  '' : search.map(({todo,deadline,todo_id,remarks})=> (
+                  {len ? search.map(({todo,deadline,todo_id,remarks})=> (
                   <tbody>
                     <tr key={todo_id}>
                       <td>
@@ -313,7 +316,7 @@ function Todo() {
                     
                     </tr>
                     </tbody>
-                  ))}
+                  )):''}
 
                     <br/><br/>
                     <tr>
