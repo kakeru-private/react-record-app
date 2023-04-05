@@ -60,7 +60,7 @@ tr{
 .tableContainer {
   /*padding-right: 10vh ;*/
   height: auto;
-  width: calc(100%-200px);
+  width: calc(100%-150px);
   display: flex;
   align-items:center;
   justify-content: center;
@@ -351,7 +351,7 @@ button:hover{
   position: fixed;
   top:120px;
   right: 0;
-  width: 200px;
+  width: 150px;
   font-size: 20px;
 
 }
