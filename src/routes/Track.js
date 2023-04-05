@@ -231,8 +231,8 @@ function Track() {
         
         
         <h1 className='title'>TRACK</h1>
-        <div className='layout'>
-       
+        <AncLink />
+        
         <div className='tableContainer'>
 
           <div className='mainBody'>
@@ -394,8 +394,7 @@ function Track() {
                     
           
         </div>
-        <AncLink />
-        </div>
+            
         
         </div>
         

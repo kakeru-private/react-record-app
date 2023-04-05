@@ -196,9 +196,7 @@ function Memo() {
         
         
         <h1 id='top' className='title'>MEMO</h1>
-        <div className='layout'>
-        
-        
+        <AncLink/>
         
         <div className='tableContainer'>
 
@@ -317,8 +315,7 @@ function Memo() {
             
             </div>
             
-            <AncLink/>
-        </div>
+          
         
         </div>
         
