@@ -104,7 +104,7 @@ function Memo() {
         .then((data) => {
         if(data.message === 'connection err'){
           setTimeout(()=>{
-            handleDle()
+            handleDel()
           },1*500)
         }else if(data.message === 'success'){
           setIns(ins+1)
@@ -176,7 +176,7 @@ function Memo() {
             setIns(ins+1)
           },1*500)
         }else if(data.length > 0 ){
-          setValue(data) ,
+          setValue(data) 
           setSearch(data)
         }else{
           setValue(init) 
