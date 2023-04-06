@@ -76,7 +76,7 @@ function Track() {
       
       if(id !== undefined &&  search[id].title !== '' &&  search[id].artist !== '' && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/track/edit',{
-          method:'POST',mode:'cors',credentials: 'include',
+          method:'GET',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
@@ -111,7 +111,7 @@ function Track() {
 
       if(id !== undefined && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/track/delete',{
-          method:'POST',mode:'cors',credentials: 'include',
+          method:'GET',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
@@ -148,7 +148,7 @@ function Track() {
       if(formValues.title !== '' && formValues.artist !== '' && id !== undefined && uid !== undefined){
         
         fetch('https://react-record-todo.herokuapp.com/track/add',{
-          method:'POST',mode:'cors',credentials: 'include',
+          method:'GET',mode:'cors',credentials: 'include',
           headers:{'Accept':'application/json','Content-Type': 'application/json'},
           body: JSON.stringify(
             {
@@ -184,7 +184,7 @@ function Track() {
 
     useEffect(() => {
       fetch('https://react-record-todo.herokuapp.com/track',{
-          method:'POST',mode:'cors',credentials: 'include',
+          method:'GET',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
