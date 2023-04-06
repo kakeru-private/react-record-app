@@ -62,10 +62,11 @@ function Home() {
       headers: {
         'Accept':'application/json','Content-Type': 'application/json'
       },
-      body:
+      body:JSON.stringify(
         {
           'uid':`${uid}`,
         },
+      )
       
     })
     .then((res) => res.json())
