@@ -60,7 +60,7 @@ function Home() {
     fetch('https://react-record-todo.herokuapp.com',{
       method:'POST',mode:'cors',credentials: 'include',
       headers: {
-        'Content-Type': 'text/plain'
+        'Accept':'application/json','Content-Type': 'application/json'
       },
       body:
         {
