@@ -54,7 +54,7 @@ function Book() {
       console.log(search[id].title);
       if(id !== undefined && search[id].title !== '' && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/book/edit',{
-          method:'GET',mode:'cors',credentials: 'include',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
@@ -95,7 +95,7 @@ function Book() {
 
       if(id !== undefined && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/book/delete',{
-          method:'GET',mode:'cors',credentials: 'include',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
@@ -211,7 +211,7 @@ function Book() {
           release_date = time;
         } 
         fetch('https://react-record-todo.herokuapp.com/book/add',{
-          method:'GET',mode:'cors',credentials: 'include',
+          method:'POST',mode:'cors',credentials: 'include',
           headers:{'Accept':'application/json','Content-Type': 'application/json'},
           body: JSON.stringify(
             {
@@ -252,7 +252,7 @@ function Book() {
     useEffect(() => {
       
       fetch('https://react-record-todo.herokuapp.com/book',{
-        method:'GET',mode:'cors',credentials: 'include',
+        method:'POST',mode:'cors',credentials: 'include',
         headers: {
           'Accept':'application/json','Content-Type': 'application/json'
         },

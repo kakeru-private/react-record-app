@@ -54,7 +54,7 @@ function Memo() {
       console.log(search[id].memo);
       if(id !== undefined &&  search[id].memo !== '' && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/memo/edit',{
-          method:'GET',mode:'cors',credentials: 'include',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
@@ -90,7 +90,7 @@ function Memo() {
 
       if(id !== undefined && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/memo/delete',{
-          method:'GET',mode:'cors',credentials: 'include',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
@@ -133,7 +133,7 @@ function Memo() {
       if(add !== '' && uid !== undefined){
         
         fetch('https://react-record-todo.herokuapp.com/memo/add',{
-          method:'GET',mode:'cors',credentials: 'include',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
@@ -165,7 +165,7 @@ function Memo() {
 
     useEffect(() => {
       fetch('https://react-record-todo.herokuapp.com/memo',{
-        method:'GET',mode:'cors',credentials: 'include',
+        method:'POST',mode:'cors',credentials: 'include',
         headers: {
           'Accept':'application/json','Content-Type': 'application/json'
         },

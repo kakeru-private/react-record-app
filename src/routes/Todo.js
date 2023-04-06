@@ -56,7 +56,7 @@ function Todo() {
           deadline = time;
         }
         fetch('https://react-record-todo.herokuapp.com/todo/edit',{
-          method:'GET',mode:'cors',credentials: 'include',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
@@ -93,7 +93,7 @@ function Todo() {
 
       if(id !== undefined && uid !== undefined){
         fetch('https://react-record-todo.herokuapp.com/todo/delete',{
-          method:'GET',mode:'cors',credentials: 'include',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
@@ -164,7 +164,7 @@ function Todo() {
           deadline = time;
         } 
         fetch('https://react-record-todo.herokuapp.com/todo/add',{
-          method:'GET',mode:'cors',credentials: 'include',
+          method:'POST',mode:'cors',credentials: 'include',
           headers:{'Accept':'application/json','Content-Type': 'application/json'},
           body: JSON.stringify(
             {
@@ -197,7 +197,7 @@ function Todo() {
   
     useEffect(() => {
       fetch('https://react-record-todo.herokuapp.com/todo',{
-          method:'GET',mode:'cors',credentials: 'include',
+          method:'POST',mode:'cors',credentials: 'include',
           headers: {
             'Accept':'application/json','Content-Type': 'application/json'
           },
