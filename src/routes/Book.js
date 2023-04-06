@@ -237,7 +237,7 @@ function Book() {
               },1*500)
             }else if(data.message === 'success'){
               setIns(ins+1)
-              setFormValues({book:'',release_date:time,author:''});
+              setFormValues({title:'',release_date:time,author:''});
             }
           }
           })
