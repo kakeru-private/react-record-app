@@ -62,11 +62,11 @@ function Home() {
       headers: {
         'Content-Type': 'text/plain'
       },
-      body:JSON.stringify(
+      body:
         {
           'uid':`${uid}`,
         },
-      )
+      
     })
     .then((res) => res.json())
     .then((data) => {
