@@ -213,8 +213,9 @@ function Todo() {
           if(data.message === 'connection err' && uid !== undefined){
             setTimeout(()=>{
               setIns(ins+1)
+              setLen(false)
             },1*500)
-            setLen(false)
+            
           }else if(data.length > 0 ){
             setValue(data) 
             setSearch(data)

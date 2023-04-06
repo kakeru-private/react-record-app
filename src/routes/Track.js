@@ -200,9 +200,10 @@ function Track() {
           if(data.message === 'connection err' && uid !== undefined){
             setTimeout(()=>{
               setIns(ins+1)
+              settLen(false)
+              setrLen(false)
             },1*500)
-            settLen(false)
-            setrLen(false)
+            
           }else if(data.length > 0){
             if(data.length[0] > 0){
               setValue(data[0]) 

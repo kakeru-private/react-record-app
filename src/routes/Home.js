@@ -73,9 +73,10 @@ function Home() {
       if(data.message === 'connection err' && uid !== undefined){
         setTimeout(()=>{
           setIns(ins+1)
+          setmLen(false)
+          settLen(false)
         },1*500)
-        setmLen(false)
-        settLen(false)
+        
       }else if(data.length > 0){
         if(data[0].length > 0){
           setMemoValue(data[0])

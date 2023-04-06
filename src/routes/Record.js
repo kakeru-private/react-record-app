@@ -438,9 +438,10 @@ function Record() {
           if(data.message === 'connection err' && uid !== undefined){
             setTimeout(()=>{
               setIns(ins+1)
+              setrLen(false)
+              settLen(false)
             },1*500)
-            setrLen(false)
-            settLen(false)
+            
           }else if(data.length > 0){
             if(data[0].length>0){
               setValue(data[0])   
